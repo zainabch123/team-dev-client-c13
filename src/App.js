@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './pages/dashboard';
+import Login from './pages/login';
+import Header from './components/header';
+import Register from './pages/register';
+import { useState } from 'react';
+import Navigation from './components/navigation';
+import {AuthContext, AuthProvider} from './context/auth';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <div className='App'>
+            <AuthProvider>
+                <Header />
+
+                <Navigation/>
+
+                <Routes>
+                    <Route path='login' element={<Login/>} />
+                    <Route path='register' element={<Register/>} />
+
+                    <Route index element={<Dashboard/>} />
+                </Routes>
+            </AuthProvider>
+        </div>
+    );
 }
 
 export default App;
