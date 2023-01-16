@@ -56,6 +56,9 @@
 }
 
 /* global settings here, resetting a lot of defaults */
+html {
+	font-size: 16px;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -114,7 +117,7 @@ code {
 	width: 100%;
 }
 
-/* headings */
+/* heading styling */
 h1,
 .h1,
 h2,
@@ -150,6 +153,19 @@ h4,
 	color: #000000;
 }
 
+/* text styling */
+p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+.text-medium {
+	font-size: 18px;
+}
+.text-large {
+	font-size: 20px;
+	line-height: 28px;
+}
+
 button {
 	font-family: "Lexend";
 	font-weight: normal;
@@ -158,4 +174,6 @@ button {
 	line-height: 28px;
 	text-align: center;
 	border-radius: 8px;
+	min-width: 200px;
+	max-width: 100%;
 }
