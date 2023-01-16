@@ -1,0 +1,10 @@
+body {
+	background: var(--color-blue);
+	padding: 32px;
+}
+
+.login {
+	background: white;
+	margin: 0 auto;
+	max-width: 644px;
+}
