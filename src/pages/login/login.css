@@ -18,7 +18,7 @@
 .login-logo {
 	padding-bottom: 24px;
 	margin-bottom: 24px;
-	border-bottom: 1px solid var(--color-grey);
+	border-bottom: 1px solid var(--color-blue5);
 	text-align: center;
 }
 
@@ -26,16 +26,23 @@
 	margin-bottom: 32px;
 }
 
+.login-form form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin-bottom: 40px;
+}
+
 .sociallinks {
 	text-align: center;
 	padding-bottom: 24px;
 	margin-bottom: 24px;
-	border-bottom: 1px solid var(--color-grey);
+	border-bottom: 1px solid var(--color-blue5);
 }
 
 .sociallinks-title {
 	margin-bottom: 16px;
-	color: var(--color-lightblue);
+	color: var(--color-blue1);
 }
 
 .sociallinks-links {
