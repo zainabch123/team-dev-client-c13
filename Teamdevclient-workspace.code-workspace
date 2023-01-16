@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		//
+		// editor settings
+		//
+		// add eslint as a code action on save and
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+		"editor.formatOnSave": true,
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact"
+		],
+		"[css]": {
+			"editor.tabSize": 2
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			// essentials
+			"dbaeumer.vscode-eslint",
+			"ecmel.vscode-html-css",
+			"saionaro.smart-css-autocomplete",
+			"formulahendry.auto-close-tag",
+			"esbenp.prettier-vscode",
+			// nice to have
+			"naumovs.color-highlight"
+		]
+	}
+}
