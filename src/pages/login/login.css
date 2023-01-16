@@ -1,14 +1,18 @@
-body {
-	background: var(--color-blue);
+.login-wrapper {
 	padding: 32px;
+	min-height: 100vh;
 }
 
 .login {
 	background: white;
 	margin: 0 auto;
 	max-width: 644px;
-	padding: 24px;
+	padding: 24px 24px 40px 24px;
 	border-radius: 8px;
+}
+
+.login-title {
+	margin-bottom: 32px;
 }
 
 .login-logo {
@@ -16,4 +20,31 @@ body {
 	margin-bottom: 24px;
 	border-bottom: 1px solid var(--color-grey);
 	text-align: center;
+}
+
+.login-form {
+	margin-bottom: 32px;
+}
+
+.sociallinks {
+	text-align: center;
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+	border-bottom: 1px solid var(--color-grey);
+}
+
+.sociallinks-title {
+	margin-bottom: 16px;
+	color: var(--color-lightblue);
+}
+
+.sociallinks-links {
+	display: flex;
+	gap: 24px;
+	justify-content: center;
+	align-items: center;
+}
+
+.altbutton-title {
+	margin-bottom: 24px;
 }
