@@ -16,6 +16,9 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 		"editor.formatOnSave": true,
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		},
 		"eslint.validate": [
 			"javascript",
 			"javascriptreact",
