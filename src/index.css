@@ -16,7 +16,7 @@
 	--color-grey: #e6ebf5;
 }
 
-/* global settings here */
+/* global settings here, resetting a lot of defaults */
 body {
 	margin: 0;
 	padding: 0;
@@ -27,7 +27,84 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre {
+	margin: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	border-width: 0;
+	border-style: solid;
+	border-color: theme("borderColor.default", currentColor);
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
+}
+
+/* global classes to reuse */
+.mx-auto {
+	margin: 0 auto;
+}
+.boxshadow {
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+.fontnormal {
+	font-weight: normal;
+}
+
+/* headings */
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+	font-weight: 600;
+}
+h1,
+.h1 {
+	font-size: 48px;
+	line-height: 56px;
+	color: #000000;
+}
+h2,
+.h2 {
+	font-size: 40px;
+	line-height: 48px;
+	color: #000000;
+}
+h3,
+.h3 {
+	font-size: 32px;
+	line-height: 40px;
+	color: #000046;
+}
+h4,
+.h4 {
+	font-size: 24px;
+	line-height: 32px;
+	color: #000000;
 }
