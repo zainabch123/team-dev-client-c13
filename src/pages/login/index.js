@@ -41,7 +41,7 @@ const Login = () => {
 					<Button
 						text="Log in"
 						onClick={() => onLogin(formData.email, formData.password)}
-						classes="bg-green width-full text-blue"
+						classes="green width-full"
 					/>
 				</div>
 				<div className="sociallinks">
@@ -52,7 +52,7 @@ const Login = () => {
 				</div>
 				<div className="altbutton">
 					<p className="altbutton-title">Need an account?</p>
-					<Button text="Sign up" classes="bg-offwhite text-lightblue"></Button>
+					<Button text="Sign up" classes="offwhite"></Button>
 				</div>
 			</div>
 		</div>

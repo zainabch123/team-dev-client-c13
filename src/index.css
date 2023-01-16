@@ -166,7 +166,9 @@ p {
 	line-height: 28px;
 }
 
-button {
+/* button or link styling */
+button,
+.button {
 	font-family: "Lexend";
 	font-weight: normal;
 	padding: 14px 24px;
@@ -176,4 +178,30 @@ button {
 	border-radius: 8px;
 	min-width: 200px;
 	max-width: 100%;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+button.green,
+.button.green {
+	background-color: var(--color-green);
+	color: var(--color-blue);
+}
+button.green:hover,
+.button.green:hover,
+button.green:focus,
+.button.green:focus {
+	background-color: var(--color-blue);
+	color: white;
+}
+button.offwhite,
+.button.offwhite {
+	background-color: var(--color-offwhite);
+	color: var(--color-lightblue);
+}
+button.offwhite:hover,
+.button.offwhite:hover,
+button.offwhite:focus,
+.button.offwhite:focus {
+	background-color: var(--color-blue);
+	color: white;
 }
