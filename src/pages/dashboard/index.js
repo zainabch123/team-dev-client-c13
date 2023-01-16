@@ -1,12 +1,7 @@
 import { useState } from "react";
-import Header from "../../components/header";
-import Navigation from "../../components/navigation";
 import Post from "../../components/post";
-import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
-    const { token } = useAuth()
-
     const [posts, setPosts] = useState([
         {
             id: 1,
@@ -31,9 +26,6 @@ const Dashboard = () => {
 
     return (
         <>
-            <Header/>
-            <Navigation/>
-
             {posts.map(post => <Post key={post.id} name={post.name} date={post.date} content={post.content} comments={post.comments} />)}
         </>
     );

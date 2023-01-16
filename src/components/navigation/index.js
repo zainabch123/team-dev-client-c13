@@ -5,6 +5,10 @@ import Button from "../button"
 const Navigation = () => {
     const { token, onLogout } = useAuth()
 
+    if (!token) {
+        return null
+    }
+
     return (
         <nav>
             <NavLink to='/'>Dashboard</NavLink>
