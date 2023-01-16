@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "../../components/button";
 import TextInput from "../../components/form/textInput";
 import useAuth from "../../hooks/useAuth";
+import FullLogo from "../../assets/fullLogo";
+import "./login.css";
 
 const Login = () => {
 	const { onLogin } = useAuth();
@@ -13,9 +15,11 @@ const Login = () => {
 	};
 
 	return (
-		<>
-			<p>Login</p>
-
+		<div className="login">
+			<div className="login-logo">
+				<FullLogo />
+			</div>
+			<h1 className="h3">Login</h1>
 			<div>
 				<form>
 					<TextInput
@@ -34,12 +38,11 @@ const Login = () => {
 					/>
 				</form>
 			</div>
-
 			<Button
 				text="Login"
 				onClick={() => onLogin(formData.email, formData.password)}
 			/>
-		</>
+		</div>
 	);
 };
 
