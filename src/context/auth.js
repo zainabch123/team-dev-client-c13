@@ -1,6 +1,7 @@
 import { createContext, useState } from "react"
 import { useNavigate, useLocation, Navigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
+import { login } from "../service/apiClient"
 
 const AuthContext = createContext()
 
@@ -9,8 +10,9 @@ const AuthProvider = ({ children }) => {
     const location = useLocation()
     const [token, setToken] = useState(null)
 
-    const handleLogin = () => {
-        setToken('test-token')
+    const handleLogin = async (email, password) => {
+        const res = await login(email, password)
+        setToken(res.token)
 
         navigate(location.state?.from?.pathname || '/')
     }

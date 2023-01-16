@@ -24,7 +24,7 @@ const Login = () => {
                 </form>
             </div>
 
-            <Button text='Login' onClick={onLogin} />
+            <Button text='Login' onClick={() => onLogin(formData.email, formData.password)} />
         </>
     )
 }
