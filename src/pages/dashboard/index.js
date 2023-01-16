@@ -1,3 +1,5 @@
+import Header from "../../components/header";
+import Navigation from "../../components/navigation";
 import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
@@ -5,7 +7,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <p>Hello, {token}!</p>
+            <Header/>
+            <Navigation/>
         </>
     );
 }
