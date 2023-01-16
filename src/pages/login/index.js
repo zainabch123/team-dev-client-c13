@@ -15,7 +15,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="login">
+		<div className="login mx-auto">
 			<div className="login-logo">
 				<FullLogo />
 			</div>
@@ -39,9 +39,12 @@ const Login = () => {
 				</form>
 			</div>
 			<Button
-				text="Login"
+				text="Log in"
 				onClick={() => onLogin(formData.email, formData.password)}
+				classes="bg-green width-full text-blue"
 			/>
+			<p>Need an account?</p>
+			<Button text="Sign up" classes="bg-offwhite text-lightblue"></Button>
 		</div>
 	);
 };

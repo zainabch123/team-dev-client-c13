@@ -11,12 +11,17 @@
 /* variables */
 :root {
 	--color-blue: #000046;
+	--color-lightblue: #64648c;
 	--color-green: #64dc78;
 	--color-offwhite: #f0f5fa;
 	--color-grey: #e6ebf5;
 }
+
 .bg-blue {
 	background-color: var(--color-blue);
+}
+.bg-lightblue {
+	background-color: var(--color-lightblue);
 }
 .bg-green {
 	background-color: var(--color-green);
@@ -33,6 +38,9 @@
 
 .text-blue {
 	color: var(--color-blue);
+}
+.text-lightblue {
+	color: var(--color-lightblue);
 }
 .text-green {
 	color: var(--color-green);
