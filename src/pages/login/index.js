@@ -45,13 +45,13 @@ const Login = () => {
 					/>
 				</div>
 				<div className="sociallinks">
-					<p className="sociallinks-title">Or log in with</p>
+					<p>Or log in with</p>
 					<div className="sociallinks-links">
 						<SocialLinks />
 					</div>
 				</div>
 				<div className="altbutton">
-					<p className="altbutton-title">Need an account?</p>
+					<p>Need an account?</p>
 					<Button text="Sign up" classes="offwhite"></Button>
 				</div>
 			</div>
