@@ -45,6 +45,16 @@
 	justify-content: center;
 	align-items: center;
 }
+.sociallinks-links a {
+	opacity: 1;
+	transition: all 0.2s ease;
+}
+.sociallinks-links button svg {
+	transition: all 0.2s ease;
+}
+.sociallinks-links button:hover svg {
+	transform: translateY(-3px);
+}
 
 .altbutton {
 	text-align: center;

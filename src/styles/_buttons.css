@@ -1,8 +1,9 @@
 /* button or link styling */
 button {
 	cursor: pointer;
+	background: none;
 }
-button:not(.formbutton),
+button:not(.formbutton):not(.socialbutton),
 .button {
 	font-family: "Lexend";
 	font-weight: normal;
@@ -18,7 +19,7 @@ button:not(.formbutton),
 }
 
 @media only screen and (min-width: 568px) {
-	button:not(.width-full) {
+	button:not(.formbutton):not(.socialbutton):not(.width-full) {
 		max-width: 200px;
 	}
 }

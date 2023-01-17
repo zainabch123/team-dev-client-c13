@@ -26,7 +26,7 @@ const TextInput = ({ value, onChange, name, label, type = "text" }) => {
 				)}
 				<button
 					className={`showpasswordbutton formbutton ${
-						showpassword && "__faded"
+						showpassword === true && "__faded"
 					}`}
 					onClick={(e) => {
 						e.preventDefault();
