@@ -1,5 +1,8 @@
 /* button or link styling */
-button,
+button {
+	cursor: pointer;
+}
+button:not(.formbutton),
 .button {
 	font-family: "Lexend";
 	font-weight: normal;
@@ -9,10 +12,17 @@ button,
 	text-align: center;
 	border-radius: 8px;
 	width: 100%;
-	max-width: 200px;
+	max-width: none;
 	transition: all 0.3s ease;
 	cursor: pointer;
 }
+
+@media only screen and (min-width: 568px) {
+	button:not(.width-full) {
+		max-width: 200px;
+	}
+}
+
 button.green,
 .button.green {
 	background-color: var(--color-green);
