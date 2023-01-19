@@ -15,7 +15,7 @@ const Register = () => {
 	};
 
 	return (
-		<div className="bg-blue register">
+		<div className="bg-blue register credentialpage">
 			<CredentialsCard
 				title="Register"
 				socialLinksTitle="Or sign up with"

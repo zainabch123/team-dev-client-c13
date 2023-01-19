@@ -12,7 +12,7 @@ const CredentialsCard = ({
 	children,
 }) => {
 	return (
-		<div className="credentials mx-auto">
+		<div className="credentials">
 			<div className="credentials-logo">
 				<FullLogo />
 			</div>
