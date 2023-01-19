@@ -1,27 +1,53 @@
-import { useState } from "react"
-import TextInput from "../../components/form/textInput"
+import { useState } from "react";
+import Button from "../../components/button";
+import TextInput from "../../components/form/textInput";
+import useAuth from "../../hooks/useAuth";
+import CredentialsCard from "../../components/credentials";
+import "./register.css";
 
 const Register = () => {
-    const [formData, setFormData] = useState({ email: '', password: '' })
+	const { onLogin } = useAuth();
+	const [formData, setFormData] = useState({ email: "", password: "" });
 
-    const onChange = (e) => {
-        const { name, value } = e.target
-        setFormData({...formData, [name]: value})
-    }
+	const onChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
+	};
 
-    return (
-        <>
-            <p>Register</p>
+	return (
+		<div className="bg-blue registerwrapper">
+			<CredentialsCard
+				title="Register"
+				socialLinksTitle="Or sign up with"
+				altButtonTitle="Already a user?"
+				altButtonLink="/login"
+				altButtonText="Sign up"
+			>
+				<div className="register-form">
+					<form>
+						<TextInput
+							value={formData.email}
+							onChange={onChange}
+							name="email"
+							label={"Email *"}
+						/>
+						<TextInput
+							value={formData.password}
+							onChange={onChange}
+							name="password"
+							label={"Password *"}
+							type={"password"}
+						/>
+					</form>
+					<Button
+						text="Sign up"
+						onClick={() => onLogin(formData.email, formData.password)}
+						classes="green width-full"
+					/>
+				</div>
+			</CredentialsCard>
+		</div>
+	);
+};
 
-            <div>
-                <form>
-                    <TextInput value={formData.email} onChange={onChange} name='email' label={'Email *'} />
-
-                    <TextInput value={formData.password} onChange={onChange} name='password' label={'Password *'} type={'password'} />
-                </form>
-            </div>
-        </>
-    )
-}
-
-export default Register
+export default Register;
