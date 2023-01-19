@@ -1,7 +1,10 @@
 /* button or link styling */
-button {
+button,
+.button {
 	cursor: pointer;
 	background: none;
+	text-decoration: none;
+	display: inline-block;
 }
 button:not(.formbutton):not(.socialbutton),
 .button {
@@ -19,7 +22,8 @@ button:not(.formbutton):not(.socialbutton),
 }
 
 @media only screen and (min-width: 568px) {
-	button:not(.formbutton):not(.socialbutton):not(.width-full) {
+	button:not(.formbutton):not(.socialbutton):not(.width-full),
+	.button:not(.formbutton):not(.socialbutton):not(.width-full) {
 		max-width: 200px;
 	}
 }
