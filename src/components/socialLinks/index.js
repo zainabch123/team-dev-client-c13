@@ -1,3 +1,5 @@
+import "./socialinks.css";
+
 const SocialLinks = () => {
 	return (
 		<>
