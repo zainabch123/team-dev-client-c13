@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import Button from "../button"
+import './style.css'
 
 const Navigation = () => {
     const { token, onLogout } = useAuth()
@@ -11,10 +12,12 @@ const Navigation = () => {
 
     return (
         <nav>
-            <NavLink to='/'>Dashboard</NavLink>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/register'>Register</NavLink>
-
+            <ul>
+                <li><NavLink to='/'>Dashboard</NavLink></li>
+                <li><NavLink to='/login'>Login</NavLink></li>
+                <li><NavLink to='/register'>Register</NavLink></li>
+            </ul>
+            
             {token && <Button text='Logout' onClick={onLogout} />}
         </nav>
     )

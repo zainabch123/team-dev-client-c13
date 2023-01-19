@@ -1,5 +1,7 @@
 import { createContext, useState } from "react"
 import { useNavigate, useLocation, Navigate } from "react-router-dom"
+import Header from "../components/header"
+import Navigation from "../components/navigation"
 import useAuth from "../hooks/useAuth"
 import { login } from "../service/apiClient"
 
@@ -42,7 +44,13 @@ const ProtectedRoute = ({ children }) => {
         return <Navigate to={'/login'} replace state={{ from: location }} />
     }
 
-    return children
+    return (
+        <div className="container">
+            <Header/>
+            <Navigation/>
+            {children}
+        </div>
+    )
 }
 
 export {

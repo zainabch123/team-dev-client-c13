@@ -1,4 +1,5 @@
 import useAuth from "../../hooks/useAuth"
+import './style.css'
 
 const Header = () => {
     const { token } = useAuth()
