@@ -5,16 +5,11 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Loading from "./pages/loading";
 import { AuthProvider, ProtectedRoute } from "./context/auth";
-import Header from "./components/header";
-import Navigation from "./components/navigation";
 
 const App = () => {
 	return (
-		<div className="App">
+		<>
 			<AuthProvider>
-				<Header />
-				<Navigation />
-
 				<Routes>
 					<Route path="login" element={<Login />} />
 					<Route path="register" element={<Register />} />
@@ -30,7 +25,7 @@ const App = () => {
 					/>
 				</Routes>
 			</AuthProvider>
-		</div>
+		</>
 	);
 };
 
