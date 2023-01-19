@@ -15,7 +15,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="bg-blue loginwrapper">
+		<div className="bg-blue login">
 			<CredentialsCard
 				title="Login"
 				socialLinksTitle="Or log in with"

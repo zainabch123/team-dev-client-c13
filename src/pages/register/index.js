@@ -15,13 +15,13 @@ const Register = () => {
 	};
 
 	return (
-		<div className="bg-blue registerwrapper">
+		<div className="bg-blue register">
 			<CredentialsCard
 				title="Register"
 				socialLinksTitle="Or sign up with"
 				altButtonTitle="Already a user?"
 				altButtonLink="/login"
-				altButtonText="Sign up"
+				altButtonText="Log in"
 			>
 				<div className="register-form">
 					<form>
