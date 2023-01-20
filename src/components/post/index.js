@@ -3,11 +3,13 @@ import Comment from "../comment"
 import "./style.css"
 
 const Post = ({ name, date, content, comments = [], likes = 0 }) => {
+    const userInitials = name.match(/\b(\w)/g)
+
     return (
         <Card>
             <article className="post">
                 <section id='post-details'>
-                    <div className="profile-icon"></div>
+                    <div className="profile-icon"><p>{userInitials}</p></div>
 
                     <div>
                         <p>{name}</p>

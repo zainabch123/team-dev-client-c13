@@ -13,7 +13,13 @@
     border-radius: 50%;
     width: 56px;
     height: 56px;
+    text-align: center;
     background: #5ABEDC;
+}
+
+.profile-icon p {
+    line-height: 56px;
+    font-weight: 500;
 }
 
 .edit-icon {
