@@ -9,6 +9,19 @@
     column-gap: 20px;
 }
 
+.post-user-name {
+    padding-top: 4px;
+}
+
+.post-user-name p {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.post-user-name small {
+    color: #64648C;
+}
+
 .profile-icon {
     border-radius: 50%;
     width: 56px;
@@ -19,7 +32,8 @@
 
 .profile-icon p {
     line-height: 56px;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .edit-icon {

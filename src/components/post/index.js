@@ -11,7 +11,7 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
                 <section id='post-details'>
                     <div className="profile-icon"><p>{userInitials}</p></div>
 
-                    <div>
+                    <div className="post-user-name">
                         <p>{name}</p>
                         <small>{date}</small>
                     </div>
