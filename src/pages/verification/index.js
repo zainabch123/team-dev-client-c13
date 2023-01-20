@@ -8,7 +8,7 @@ const Verification = () => {
 			<div className="bg-white verify-card">
 				<TickIcon />
 				<h1 className="h3">Welcome to Cohort Manager</h1>
-				<div className="text-lightblue">
+				<div className="text-blue1">
 					<p className="text-medium">
 						We have sent you a verification email to check and confirm your
 						email address.

@@ -5,10 +5,10 @@ const Welcome = () => {
 	return (
 		<div className="welcome bg-lightgrey">
 			<h1 className="h2">Welcome to Cohort Manager</h1>
-			<p className="text-lightblue">Create your profile to get started</p>
+			<p className="text-blue1">Create your profile to get started</p>
 			<div className="">
 				<h2>Create profile</h2>
-				<p className="text-lightblue">
+				<p className="text-blue1">
 					Tell us about yourself to create your profile
 				</p>
 			</div>
