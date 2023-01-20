@@ -2,7 +2,7 @@ import Card from "../card"
 import Comment from "../comment"
 import "./style.css"
 
-const Post = ({ name, date, content, comments = [] }) => {
+const Post = ({ name, date, content, comments = [], likes = 0 }) => {
     return (
         <Card>
             <article className="post">
@@ -29,7 +29,7 @@ const Post = ({ name, date, content, comments = [] }) => {
                         <div>Comment</div>
                     </div>
 
-                    <p>Be the first to like this</p>
+                    <p>{!likes && 'Be the first to like this'}</p>
                     
                 </section>
 
