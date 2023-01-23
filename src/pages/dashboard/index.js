@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
-import Post from "../../components/post";
-import { getPosts } from "../../service/apiClient";
+import Card from "../../components/card";
+import Posts from "../../components/posts";
+import './style.css'
 
 const Dashboard = () => {
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        getPosts().then(setPosts)
-    }, [])
-
     return (
         <>
-            {posts.map(post => {
-                return <Post
-                    key={post.id}
-                    name={`${post.author.firstName} ${post.author.lastName}`}
-                    date={post.createdAt}
-                    content={post.content}
-                    comments={post.comments}
-                />
-            })}
+            <main>
+                <Card>
+                    <h5>What's on your mind?</h5>
+                </Card>
+                
+                <Posts />
+            </main>
+
+            <aside>
+                <Card>
+                    <h4>My Cohort</h4>
+                </Card>
+            </aside>
         </>
     );
 }
