@@ -1,6 +1,5 @@
 import Card from "../../components/card";
 import CreatePostModal from "../../components/createPostModal";
-import Modal from "../../components/modal";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import './style.css'
