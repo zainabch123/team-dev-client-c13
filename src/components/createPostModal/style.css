@@ -12,7 +12,3 @@ textarea {
     border-radius: 8px;
     padding: 16px;
 }
-
-.create-post-actions button {
-    float: right; /* Probably shouldn't use float, find a better way */
-}
