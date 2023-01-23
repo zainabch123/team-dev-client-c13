@@ -1,13 +1,19 @@
 import Card from "../../components/card";
+import Modal from "../../components/modal";
 import Posts from "../../components/posts";
+import useModal from "../../hooks/useModal";
 import './style.css'
 
 const Dashboard = () => {
+    const { openModal } = useModal()
+
     return (
         <>
             <main>
                 <Card>
                     <h5>What's on your mind?</h5>
+                    <button onClick={openModal}>Click!</button>
+                    <Modal/>
                 </Card>
                 
                 <Posts />
