@@ -22,20 +22,6 @@
     color: #64648C;
 }
 
-.profile-icon {
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    text-align: center;
-    background: #5ABEDC;
-}
-
-.profile-icon p {
-    line-height: 56px;
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-
 .edit-icon {
     border-radius: 50%;
     width: 40px;

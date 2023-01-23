@@ -40,7 +40,7 @@ const TextInput = ({ value, onChange, name, label, type = "text" }) => {
 	} else {
 		return (
 			<div className="inputwrapper">
-				<label htmlFor={name}>{label}</label>
+				{label && <label htmlFor={name}>{label}</label>}
 				<input type={type} name={name} value={value} onChange={onChange} />
 			</div>
 		);
