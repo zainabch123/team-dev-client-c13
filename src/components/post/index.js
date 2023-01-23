@@ -6,13 +6,14 @@ import "./style.css"
 
 const Post = ({ name, date, content, comments = [], likes = 0 }) => {
     const { openModal, setModal } = useModal()
-    
+
     const userInitials = name.match(/\b(\w)/g)
 
     const showModal = () => {
         setModal('Edit post', <EditPostModal />)
         openModal()
     }
+    //    border-bottom: 1px solid var(--color-blue5);
 
     return (
         <Card>
@@ -30,11 +31,11 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
                     </div>
                 </section>
 
-                <section>
+                <section className="post-content">
                     <p>{content}</p>
                 </section>
 
-                <section className="post-interactions-container">
+                <section className={`post-interactions-container border-top ${comments.length ? 'border-bottom' : null}`}>
                     <div className="post-interactions">
                         <div>Like</div>
                         <div>Comment</div>

@@ -86,3 +86,9 @@ code {
 	width: 100%;
 	max-width: none;
 }
+.border-bottom {
+    border-bottom: 1px solid var(--color-blue5);
+}
+.border-top {
+    border-top: 1px solid var(--color-blue5);
+}
