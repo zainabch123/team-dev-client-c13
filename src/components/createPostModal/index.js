@@ -37,7 +37,7 @@ const CreatePostModal = () => {
                 <Button
                     onClick={onSubmit}
                     text='Post'
-                    classes={`${text.length > 0 ? 'blue' : 'offwhite' } width-full`}
+                    classes={`${text.length ? 'blue' : 'offwhite' } width-full`}
                     disabled={!text.length}
                 />
             </section>
