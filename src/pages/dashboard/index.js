@@ -21,8 +21,10 @@ const Dashboard = () => {
         <>
             <main>
                 <Card>
-                    <h5>What's on your mind?</h5>
-                    <button onClick={showModal}>Click!</button>
+                    <div className="create-post-input">
+                        <div className="profile-icon"><p>AJ</p></div>
+                        <button onClick={showModal}>What's on your mind?</button>
+                    </div>
                     
                 </Card>
                 
