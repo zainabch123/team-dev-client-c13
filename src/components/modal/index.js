@@ -5,8 +5,8 @@ import './style.css'
 
 ReactModal.setAppElement('#root')
 
-const Modal = ({ children, header, width = '612px' }) => {
-    const { isOpen, closeModal } = useModal()
+const Modal = ({ width = '612px' }) => {
+    const { isOpen, closeModal, modalComponent, modalHeader } = useModal()
 
     style.content.width = width
 
@@ -18,12 +18,12 @@ const Modal = ({ children, header, width = '612px' }) => {
         >
             <div className="modal-body">
                 <section className="modal-header">
-                    <h1>{header}</h1>
+                    <h1>{modalHeader}</h1>
                     <p onClick={closeModal}>X</p>
                 </section>
                 
                 <section className="modal-content">
-                    {children}
+                    {modalComponent}
                 </section>
             </div>
         </ReactModal>

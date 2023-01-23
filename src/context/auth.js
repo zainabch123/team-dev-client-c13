@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import Header from "../components/header";
+import Modal from "../components/modal";
 import Navigation from "../components/navigation";
 import useAuth from "../hooks/useAuth";
 import { login } from "../service/apiClient";
@@ -44,6 +45,7 @@ const ProtectedRoute = ({ disabledNav = false, children }) => {
 		<div className="container">
 			<Header />
 			<Navigation />
+            <Modal />
 			{children}
 		</div>
 	);

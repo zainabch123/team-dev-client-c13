@@ -1,9 +1,18 @@
+import useModal from "../../hooks/useModal"
 import Card from "../card"
 import Comment from "../comment"
+import EditPostModal from "../editPostModal"
 import "./style.css"
 
 const Post = ({ name, date, content, comments = [], likes = 0 }) => {
+    const { openModal, setModal } = useModal()
+    
     const userInitials = name.match(/\b(\w)/g)
+
+    const showModal = () => {
+        setModal('Edit post', <EditPostModal />)
+        openModal()
+    }
 
     return (
         <Card>
@@ -17,7 +26,7 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
                     </div>
                     
                     <div className="edit-icon">
-                        <p>...</p>
+                        <p onClick={showModal}>...</p>
                     </div>
                 </section>
 
