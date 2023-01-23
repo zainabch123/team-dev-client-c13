@@ -1,9 +1,11 @@
 const style = {
     content: {
-        top: '100px',
-        left: '100px',
-        right: '100px',
-        bottom: '100px'
+        margin: '0 auto',
+        position: 'relative',
+        top: '14%'
+    },
+    overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
     }
 }
 

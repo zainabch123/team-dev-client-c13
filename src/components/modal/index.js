@@ -5,18 +5,16 @@ import './style.css'
 
 ReactModal.setAppElement('#root')
 
-const Modal = ({ children, header, height }) => {
+const Modal = ({ children, header, width = '612px' }) => {
     const { isOpen, closeModal } = useModal()
 
-    if (height) {
-        style.content.height = height
-    }
+    style.content.width = width
 
     return (
         <ReactModal
-            isOpen={isOpen}
-            onRequestClose={closeModal}
-            style={style}
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        style={style}
         >
             <div className="modal-body">
                 <section className="modal-header">
