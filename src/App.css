@@ -8,3 +8,8 @@
     grid-template-rows: 96px auto;
     background-color: #F0F5FA;
 }
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}

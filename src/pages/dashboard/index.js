@@ -1,4 +1,5 @@
 import Card from "../../components/card";
+import CreatePostModal from "../../components/createPostModal";
 import Modal from "../../components/modal";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
@@ -13,7 +14,8 @@ const Dashboard = () => {
                 <Card>
                     <h5>What's on your mind?</h5>
                     <button onClick={openModal}>Click!</button>
-                    <Modal/>
+
+                    <CreatePostModal />
                 </Card>
                 
                 <Posts />
