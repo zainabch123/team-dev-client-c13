@@ -1,3 +1,4 @@
+import FullLogo from "../../assets/fullLogo"
 import useAuth from "../../hooks/useAuth"
 import './style.css'
 
@@ -10,7 +11,7 @@ const Header = () => {
 
     return (
         <header>
-            <h1>Cohort Manager</h1>
+            <FullLogo textColour="white" />
         </header>
     )
 }

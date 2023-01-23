@@ -43,7 +43,7 @@ const ProtectedRoute = ({ disabledNav = false, children }) => {
 	return (
 		<div className="container">
 			<Header />
-			<Navigation disabledNav={disabledNav} />
+			<Navigation />
 			{children}
 		</div>
 	);

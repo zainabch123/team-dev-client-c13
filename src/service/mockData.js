@@ -26,6 +26,21 @@ const posts = [
             lastName: "Fletcher",
             bio: "Lorem ipsum dolor sit amet.",
             githubUrl: "https://github.com/vherus"
+        }
+    },
+    {
+        id: 2,
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        createdAt: "19 February at 09:56",
+        updatedAt: "19 February at 10:32",
+        author: {
+            id: 2,
+            cohortId: 1,
+            role: "STUDENT",
+            firstName: "Dolor",
+            lastName: "Lobortis",
+            bio: "Lorem ipsum dolor sit amet.",
+            githubUrl: "https://github.com/vherus"
         },
         comments: [
             { id: 2, name: 'Dana Sharwarma', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
