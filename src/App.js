@@ -5,6 +5,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Loading from "./pages/loading";
 import Verification from "./pages/verification";
+import Welcome from "./pages/welcome";
 import { AuthProvider, ProtectedRoute } from "./context/auth";
 
 const App = () => {
@@ -22,6 +23,14 @@ const App = () => {
 						element={
 							<ProtectedRoute>
 								<Dashboard />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="welcome"
+						element={
+							<ProtectedRoute disabledNav={true}>
+								<Welcome />
 							</ProtectedRoute>
 						}
 					/>

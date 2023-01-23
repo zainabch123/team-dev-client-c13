@@ -7,11 +7,11 @@ import Button from "../button"
 import './style.css'
 
 const Navigation = () => {
-    const { token, onLogout } = useAuth()
+	const { token, onLogout } = useAuth();
 
-    if (!token) {
-        return null
-    }
+	if (!token) {
+		return null;
+	}
 
     return (
         <nav>
@@ -26,4 +26,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+export default Navigation;
