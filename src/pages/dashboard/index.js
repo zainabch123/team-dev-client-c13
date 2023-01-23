@@ -1,3 +1,4 @@
+import Button from "../../components/button";
 import Card from "../../components/card";
 import CreatePostModal from "../../components/createPostModal";
 import Posts from "../../components/posts";
@@ -23,7 +24,7 @@ const Dashboard = () => {
                 <Card>
                     <div className="create-post-input">
                         <div className="profile-icon"><p>AJ</p></div>
-                        <button onClick={showModal}>What's on your mind?</button>
+                        <Button text="What's on your mind?" onClick={showModal} />
                     </div>
                     
                 </Card>
