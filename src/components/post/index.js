@@ -8,7 +8,7 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
     return (
         <Card>
             <article className="post">
-                <section id='post-details'>
+                <section className="post-details">
                     <div className="profile-icon"><p>{userInitials}</p></div>
 
                     <div className="post-user-name">
