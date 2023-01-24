@@ -3,11 +3,10 @@ import CohortIcon from "../../assets/icons/cohortIcon"
 import HomeIcon from "../../assets/icons/homeIcon"
 import ProfileIcon from "../../assets/icons/profileIcon"
 import useAuth from "../../hooks/useAuth"
-import Button from "../button"
 import './style.css'
 
 const Navigation = () => {
-	const { token, onLogout } = useAuth();
+	const { token } = useAuth();
 
 	if (!token) {
 		return null;
@@ -20,8 +19,6 @@ const Navigation = () => {
                 <li><NavLink to='/'><ProfileIcon /><p>Profile</p></NavLink></li>
                 <li><NavLink to='/'><CohortIcon /><p>Cohort</p></NavLink></li>
             </ul>
-            
-            {token && <Button text='Logout' onClick={onLogout} />}
         </nav>
     )
 }
