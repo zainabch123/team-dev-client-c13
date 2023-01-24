@@ -1,11 +1,20 @@
+import { useState } from "react";
+import SearchIcon from "../../assets/icons/searchIcon";
 import Button from "../../components/button";
 import Card from "../../components/card";
 import CreatePostModal from "../../components/createPostModal";
+import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import './style.css'
 
 const Dashboard = () => {
+    const [searchVal, setSearchVal] = useState(null)
+
+    const onChange = (e) => {
+        setSearchVal(e.target.value)
+    }
+
     // Use the useModal hook to get the openModal and setModal functions
     const { openModal, setModal } = useModal()
 
@@ -33,6 +42,13 @@ const Dashboard = () => {
             </main>
 
             <aside>
+                <Card>
+                    <form>
+                        <TextInput icon={<SearchIcon />} value={searchVal} name='Search' onChange={onChange} />
+                    </form>
+                    
+                </Card>
+
                 <Card>
                     <h4>My Cohort</h4>
                 </Card>

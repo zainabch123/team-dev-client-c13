@@ -21,6 +21,16 @@ form label {
 	position: relative;
 }
 
+.input-icon {
+    position: absolute;
+    left: 16px;
+    padding-top: 15px;
+}
+.input-has-icon {
+    padding-left: 56px;
+    padding-right: 10px;
+}
+
 .showpasswordbutton {
 	position: absolute;
 	bottom: 28px;
