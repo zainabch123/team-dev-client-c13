@@ -17,8 +17,8 @@ const Modal = ({ width = '612px' }) => {
         style={style}
         >
             <div className="modal-body">
-                <section className="modal-header">
-                    <h1>{modalHeader}</h1>
+                <section className="modal-header border-bottom">
+                    <h2>{modalHeader}</h2>
                     <p onClick={closeModal}>X</p>
                 </section>
                 

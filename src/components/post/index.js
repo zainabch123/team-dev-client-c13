@@ -13,7 +13,6 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
         setModal('Edit post', <EditPostModal />)
         openModal()
     }
-    //    border-bottom: 1px solid var(--color-blue5);
 
     return (
         <Card>
