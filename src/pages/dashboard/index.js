@@ -43,7 +43,7 @@ const Dashboard = () => {
 
             <aside>
                 <Card>
-                    <form>
+                    <form onSubmit={(e) => e.preventDefault()}>
                         <TextInput icon={<SearchIcon />} value={searchVal} name='Search' onChange={onChange} />
                     </form>
                     
