@@ -4,3 +4,24 @@
 .welcome-titleblock h1 {
 	margin-bottom: 16px;
 }
+.welcome-cardheader h2 {
+	margin-bottom: 16px;
+}
+.welcome-cardheader p {
+	margin-bottom: 24px;
+}
+.welcome-steps {
+	margin-bottom: 24px;
+}
+.welcome-formheader h3 {
+	margin-bottom: 32px;
+}
+.welcome-form-profileimg-input {
+	display: grid;
+	grid-template-columns: 40px auto;
+	gap: 16px;
+	align-items: center;
+}
+.welcome-form-profileimg-error {
+	color: transparent;
+}
