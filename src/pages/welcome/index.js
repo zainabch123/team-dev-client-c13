@@ -3,6 +3,7 @@ import Card from "../../components/card";
 import ProfileIcon from "../../assets/icons/profileIcon";
 import TextInput from "../../components/form/textInput";
 import Button from "../../components/button";
+import Toast from "../../components/toast";
 import "./welcome.css";
 
 const Welcome = () => {
@@ -90,6 +91,7 @@ const Welcome = () => {
 					</div>
 				</form>
 			</Card>
+			<Toast text="Profile created" linkText="Edit" />
 		</main>
 	);
 };
