@@ -1,8 +1,15 @@
 import Button from "../../components/button";
 import TickIcon from "../../assets/tickIcon";
 import "./verification.css";
+import { useNavigate } from "react-router-dom";
 
 const Verification = () => {
+    const navigate = useNavigate();
+
+    const onContinueClick = () => {
+        navigate('/welcome')
+    }
+
 	return (
 		<div className="bg-blue verify credentialpage">
 			<div className="bg-white verify-card">
@@ -20,7 +27,7 @@ const Verification = () => {
 				</div>
 				<div className="verify-card-buttons">
 					<Button text="Resend email" classes="offwhite" />
-					<Button text="Continue" classes="green" />
+					<Button text="Continue" onClick={onContinueClick} classes="green" />
 				</div>
 			</div>
 		</div>
