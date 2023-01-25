@@ -1,11 +1,15 @@
+* {
+    color: #000046;
+}
+
 .container {
-	display: grid;
-	grid-template-columns: 151px 2fr 1fr;
-	grid-template-rows: 96px auto;
-	background-color: var(--color-offwhite);
+    display: grid;
+    grid-template-columns: 151px 2fr 1fr;
+    grid-template-rows: 96px auto;
+    background-color: #F0F5FA;
 }
 
 .ReactModal__Body--open,
 .ReactModal__Html--open {
-	overflow: hidden;
+  overflow: hidden;
 }
