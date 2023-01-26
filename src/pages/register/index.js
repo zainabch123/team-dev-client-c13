@@ -6,7 +6,7 @@ import CredentialsCard from "../../components/credentials";
 import "./register.css";
 
 const Register = () => {
-	const { onLogin } = useAuth();
+	const { onRegister } = useAuth();
 	const [formData, setFormData] = useState({ email: "", password: "" });
 
 	const onChange = (e) => {
@@ -41,7 +41,7 @@ const Register = () => {
 					</form>
 					<Button
 						text="Sign up"
-						onClick={() => onLogin(formData.email, formData.password)}
+						onClick={() => onRegister(formData.email, formData.password)}
 						classes="green width-full"
 					/>
 				</div>
