@@ -9,7 +9,7 @@ import useModal from "../../hooks/useModal";
 import "./style.css";
 
 const Dashboard = () => {
-	const [searchVal, setSearchVal] = useState(null);
+	const [searchVal, setSearchVal] = useState('');
 
 	const onChange = (e) => {
 		setSearchVal(e.target.value);
