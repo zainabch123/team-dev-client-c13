@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Stepper from '../../components/stepper'
+import useAuth from '../../hooks/useAuth'
 import StepOne from './stepOne'
 import StepTwo from './stepTwo'
 import './style.css'
 
 const Welcome = () => {
-    const navigate = useNavigate()
+    const { onCreateProfile } = useAuth()
 
     const [profile, setProfile] = useState({
         firstName: '',
@@ -26,7 +26,7 @@ const Welcome = () => {
 
     const onComplete = () => {
         // TODO submit the profile data to the API!
-        navigate('/')
+        onCreateProfile()
     }
 
     return (
