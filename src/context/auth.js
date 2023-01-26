@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 };
 
-const ProtectedRoute = ({ disabledNav = false, children }) => {
+const ProtectedRoute = ({ children }) => {
 	const { token } = useAuth()
 	const location = useLocation()
 
