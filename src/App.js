@@ -5,7 +5,6 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Loading from "./pages/loading";
 import Verification from "./pages/verification";
-import Stepper from "./components/stepper";
 import { AuthProvider, ProtectedRoute } from "./context/auth";
 import { ModalProvider } from "./context/modal";
 import Welcome from "./pages/welcome";
