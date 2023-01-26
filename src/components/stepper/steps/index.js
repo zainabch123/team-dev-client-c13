@@ -1,6 +1,6 @@
 import "./steps.css";
 
-const Steps = ({ maxSteps = 4, currentStep = 0 }) => {
+const Steps = ({ maxSteps, currentStep = 0 }) => {
 	return (
 		<ul className="steps">
 			{[...Array(maxSteps)].map((_, i) => (
