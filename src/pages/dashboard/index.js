@@ -6,7 +6,6 @@ import CreatePostModal from "../../components/createPostModal";
 import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
-import Menu from "../../components/menu";
 import "./style.css";
 
 const Dashboard = () => {
@@ -31,7 +30,6 @@ const Dashboard = () => {
 	return (
 		<>
 			<main>
-				<Menu />
 				<Card>
 					<div className="create-post-input">
 						<div className="profile-icon">

@@ -2,6 +2,7 @@ import useModal from "../../hooks/useModal"
 import Card from "../card"
 import Comment from "../comment"
 import EditPostModal from "../editPostModal"
+import ProfileCircle from "../profileCircle"
 import "./style.css"
 
 const Post = ({ name, date, content, comments = [], likes = 0 }) => {
@@ -18,7 +19,7 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
         <Card>
             <article className="post">
                 <section className="post-details">
-                    <div className="profile-icon"><p>{userInitials}</p></div>
+                    <ProfileCircle initials={userInitials} />
 
                     <div className="post-user-name">
                         <p>{name}</p>
