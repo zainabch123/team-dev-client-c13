@@ -24,10 +24,18 @@ const AuthProvider = ({ children }) => {
 		setToken(null);
 	};
 
+    const handleRegister = async (email, password) => {
+        const res = await login(email, password);
+		setToken(res.token);
+
+        navigate("/verification");
+    }
+
 	const value = {
 		token,
 		onLogin: handleLogin,
 		onLogout: handleLogout,
+        onRegister: handleRegister
 	};
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
