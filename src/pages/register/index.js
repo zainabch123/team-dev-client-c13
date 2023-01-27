@@ -28,6 +28,7 @@ const Register = () => {
 						<TextInput
 							value={formData.email}
 							onChange={onChange}
+                            type="email"
 							name="email"
 							label={"Email *"}
 						/>
