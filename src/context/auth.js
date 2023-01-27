@@ -4,7 +4,8 @@ import Header from "../components/header";
 import Modal from "../components/modal";
 import Navigation from "../components/navigation";
 import useAuth from "../hooks/useAuth";
-import { login } from "../service/apiClient";
+import { createProfile, login, register } from "../service/apiClient";
+import jwt_decode from "jwt-decode"
 
 const AuthContext = createContext()
 
@@ -24,7 +25,7 @@ const AuthProvider = ({ children }) => {
 
 	const handleLogin = async (email, password) => {
 		const res = await login(email, password)
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('token', res.data.token)
 
 		setToken(res.token)
 		navigate(location.state?.from?.pathname || "/")
@@ -36,13 +37,17 @@ const AuthProvider = ({ children }) => {
 	};
 
     const handleRegister = async (email, password) => {
-        const res = await login(email, password)
-		setToken(res.token)
+        const res = await register(email, password)
+		setToken(res.data.token)
 
         navigate("/verification")
     }
 
-    const handleCreateProfile = () => {
+    const handleCreateProfile = async (firstName, lastName, githubUrl, bio) => {
+        const { userId } = jwt_decode(token)
+
+        await createProfile(userId, firstName, lastName, githubUrl, bio)
+
         localStorage.setItem('token', token)
         navigate('/')
     }

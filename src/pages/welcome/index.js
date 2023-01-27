@@ -25,8 +25,7 @@ const Welcome = () => {
 	};
 
 	const onComplete = () => {
-		// TODO submit the profile data to the API!
-		onCreateProfile();
+		onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio);
 	};
 
 	return (
