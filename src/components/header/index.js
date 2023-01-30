@@ -44,7 +44,7 @@ const Header = () => {
                             <ul>
                                 <li><NavLink to='/'><ProfileIcon /> <p>Profile</p></NavLink></li>
                                 <li><NavLink to='/'><CogIcon /> <p>Settings &amp; Privacy</p></NavLink></li>
-                                <li><NavLink onClick={onLogout}><LogoutIcon /> <p>Log out</p></NavLink></li>
+                                <li><NavLink to='#' onClick={onLogout}><LogoutIcon /> <p>Log out</p></NavLink></li>
                             </ul>
                         </section>
                     </Card>
