@@ -25,6 +25,11 @@ const AuthProvider = ({ children }) => {
 
 	const handleLogin = async (email, password) => {
 		const res = await login(email, password)
+
+        if (!res.data.token) {
+            return navigate("/login")
+        }
+
         localStorage.setItem('token', res.data.token)
 
 		setToken(res.token)
