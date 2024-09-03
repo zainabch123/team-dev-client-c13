@@ -9,6 +9,7 @@ const Register = () => {
   const { onRegister } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
+  const specialChars = /^(?=.*[!@#$%^&*])/;
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -40,14 +41,23 @@ const Register = () => {
               label={"Password *"}
               type={"password"}
             />
+            <div>{errorMsg}</div>
           </form>
-          <div>{errorMsg}</div>
           <Button
             text="Sign up"
             onClick={() => {
               let enteredPass = formData.password;
+              setErrorMsg("");
               if (enteredPass.length < 8) {
-                setErrorMsg("short");
+                setErrorMsg("Password must be at least 8 characters long!");
+              } else if (enteredPass.toLowerCase() === enteredPass) {
+                setErrorMsg(
+                  "Password must contain at least 1 uppercase letter"
+                );
+              } else if (!specialChars.test(enteredPass)) {
+                setErrorMsg(
+                  "Password must contain at least 1 special character"
+                );
               } else {
                 onRegister(formData.email, formData.password);
               }
