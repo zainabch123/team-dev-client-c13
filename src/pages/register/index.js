@@ -10,6 +10,7 @@ const Register = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
   const specialChars = /^(?=.*[!@#$%^&*])/;
+  const numbers = /^(?=.*[0-9])/;
   // This doesn't work and could be implemented later
   // const forbiddenChars = /^(?=.*[(){}[]|`¬¦!"£$%^&*"<>:;#~_-+=,@])/;
   const onChange = (e) => {
@@ -58,6 +59,8 @@ const Register = () => {
                 setErrorMsg(
                   "Password must contain at least 1 uppercase and 1 lowercase letter"
                 );
+              } else if (!numbers.test(enteredPass)) {
+                setErrorMsg("Password must contain at least 1 number");
               } else if (!specialChars.test(enteredPass)) {
                 setErrorMsg(
                   "Password must contain at least 1 special character"
