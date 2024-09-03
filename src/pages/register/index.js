@@ -10,7 +10,8 @@ const Register = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
   const specialChars = /^(?=.*[!@#$%^&*])/;
-
+  // This doesn't work and could be implemented later
+  // const forbiddenChars = /^(?=.*[(){}[]|`¬¦!"£$%^&*"<>:;#~_-+=,@])/;
   const onChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -50,15 +51,23 @@ const Register = () => {
               setErrorMsg("");
               if (enteredPass.length < 8) {
                 setErrorMsg("Password must be at least 8 characters long!");
-              } else if (enteredPass.toLowerCase() === enteredPass) {
+              } else if (
+                enteredPass.toLowerCase() === enteredPass ||
+                enteredPass.toUpperCase() === enteredPass
+              ) {
                 setErrorMsg(
-                  "Password must contain at least 1 uppercase letter"
+                  "Password must contain at least 1 uppercase and 1 lowercase letter"
                 );
               } else if (!specialChars.test(enteredPass)) {
                 setErrorMsg(
                   "Password must contain at least 1 special character"
                 );
-              } else {
+              }
+              // This does not work and should be fixed later
+              // if (forbiddenChars.test(enteredPass)) {
+              //   setErrorMsg("Password contains forbidden characters!");
+              // } else
+              else {
                 onRegister(formData.email, formData.password);
               }
             }}
