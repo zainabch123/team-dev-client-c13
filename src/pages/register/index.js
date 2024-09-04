@@ -11,14 +11,12 @@ const Register = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const specialChars = /^(?=.*[!@#$%^&*])/;
   const numbers = /^(?=.*[0-9])/;
-  // This doesn't work and could be implemented later
-  // const forbiddenChars = /^(?=.*[(){}[]|`¬¦!"£$%^&*"<>:;#~_-+=,@])/;
-  const onChange = (e) => {
+  const onFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  function checkPasswordAndSubmit() {
+  function validatePassword() {
     let enteredPass = formData.password;
     setErrorMsg("");
     if (enteredPass.length < 8) {
@@ -38,12 +36,13 @@ const Register = () => {
     } else if (!specialChars.test(enteredPass)) {
       setErrorMsg("Password must contain at least 1 special character");
       return false;
+    } else {
+      return true;
     }
-    // This does not work and should be fixed later
-    // if (forbiddenChars.test(enteredPass)) {
-    //   setErrorMsg("Password contains forbidden characters!");
-    // } else
-    else {
+  }
+
+  function submitRegisterUser() {
+    if (validatePassword()) {
       onRegister(formData.email, formData.password);
     }
   }
@@ -61,14 +60,14 @@ const Register = () => {
           <form>
             <TextInput
               value={formData.email}
-              onChange={onChange}
+              onChange={onFormChange}
               type="email"
               name="email"
               label={"Email *"}
             />
             <TextInput
               value={formData.password}
-              onChange={onChange}
+              onChange={onFormChange}
               name="password"
               label={"Password *"}
               type={"password"}
@@ -78,7 +77,7 @@ const Register = () => {
           <Button
             text="Sign up"
             onClick={() => {
-              checkPasswordAndSubmit();
+              submitRegisterUser();
             }}
             classes="green width-full"
           />
