@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 const Verification = () => {
     const navigate = useNavigate();
 
+	console.log("we are here")
+
     const onContinueClick = () => {
+		console.log("button clicked");
         navigate('/welcome')
     }
 
