@@ -18,6 +18,36 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  function checkPasswordAndSubmit() {
+    let enteredPass = formData.password;
+    setErrorMsg("");
+    if (enteredPass.length < 8) {
+      setErrorMsg("Password must be at least 8 characters long!");
+      return false;
+    } else if (
+      enteredPass.toLowerCase() === enteredPass ||
+      enteredPass.toUpperCase() === enteredPass
+    ) {
+      setErrorMsg(
+        "Password must contain at least 1 uppercase and 1 lowercase letter"
+      );
+      return false;
+    } else if (!numbers.test(enteredPass)) {
+      setErrorMsg("Password must contain at least 1 number");
+      return false;
+    } else if (!specialChars.test(enteredPass)) {
+      setErrorMsg("Password must contain at least 1 special character");
+      return false;
+    }
+    // This does not work and should be fixed later
+    // if (forbiddenChars.test(enteredPass)) {
+    //   setErrorMsg("Password contains forbidden characters!");
+    // } else
+    else {
+      onRegister(formData.email, formData.password);
+    }
+  }
+
   return (
     <div className="bg-blue register credentialpage">
       <CredentialsCard
@@ -48,31 +78,7 @@ const Register = () => {
           <Button
             text="Sign up"
             onClick={() => {
-              let enteredPass = formData.password;
-              setErrorMsg("");
-              if (enteredPass.length < 8) {
-                setErrorMsg("Password must be at least 8 characters long!");
-              } else if (
-                enteredPass.toLowerCase() === enteredPass ||
-                enteredPass.toUpperCase() === enteredPass
-              ) {
-                setErrorMsg(
-                  "Password must contain at least 1 uppercase and 1 lowercase letter"
-                );
-              } else if (!numbers.test(enteredPass)) {
-                setErrorMsg("Password must contain at least 1 number");
-              } else if (!specialChars.test(enteredPass)) {
-                setErrorMsg(
-                  "Password must contain at least 1 special character"
-                );
-              }
-              // This does not work and should be fixed later
-              // if (forbiddenChars.test(enteredPass)) {
-              //   setErrorMsg("Password contains forbidden characters!");
-              // } else
-              else {
-                onRegister(formData.email, formData.password);
-              }
+              checkPasswordAndSubmit();
             }}
             classes="green width-full"
           />
