@@ -91,14 +91,16 @@ const Register = () => {
               type={"password"}
             />
             <div>{errorMsg}</div>
+            <Button
+              type="submit"
+              text="Sign up"
+              onClick={(e) => {
+                e.preventDefault();
+                submitRegisterUser();
+              }}
+              classes="green width-full"
+            />
           </form>
-          <Button
-            text="Sign up"
-            onClick={() => {
-              submitRegisterUser();
-            }}
-            classes="green width-full"
-          />
         </div>
       </CredentialsCard>
     </div>
