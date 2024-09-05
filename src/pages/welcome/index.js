@@ -13,6 +13,7 @@ const Welcome = () => {
 		lastName: "",
 		githubUsername: "",
 		bio: "",
+		profilePicture: "",
 	});
 
 	const onChange = (event) => {
@@ -25,7 +26,11 @@ const Welcome = () => {
 	};
 
 	const onComplete = () => {
-		onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio);
+		if (profile.profilePicture) {
+			onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio, profile.profilePicture);
+		} else {
+			onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio);
+		}
 	};
 
 	return (
@@ -35,7 +40,7 @@ const Welcome = () => {
 				<p className="text-blue1">Create your profile to get started</p>
 			</div>
 
-			<Stepper header={<WelcomeHeader />} onComplete={onComplete}>
+			<Stepper data={profile} header={<WelcomeHeader />} onComplete={onComplete}>
 				<StepOne data={profile} setData={onChange} />
 				<StepTwo data={profile} setData={onChange} />
 			</Stepper>
