@@ -10,27 +10,34 @@ const Register = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
 
-  const specialChars = /^(?=.*[!@#$%^&*])/;
-  const numbers = /^(?=.*[0-9])/;
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
   const onFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   function validateEmail() {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
     if (!emailPattern.test(formData.email)) {
       setErrorMsg("Please enter a valid email address.");
       return false;
     }
+    
     return true;
   }
 
   function validatePassword() {
+    const specialChars = /^(?=.*[!@#$%^&*])/;
+    const numbers = /^(?=.*[0-9])/;
+    const forbiddenChars = /^(?=.*[(){}[\]|`¬¦"'<>:;|~_\-+=,])/;
+    
     let enteredPass = formData.password;
     setErrorMsg("");
-    if (enteredPass.length < 8) {
+    
+    if (forbiddenChars.test(enteredPass)) {
+      setErrorMsg("Password contains invalid characters!");
+      return false;
+    } else if (enteredPass.length < 8) {
       setErrorMsg("Password must be at least 8 characters long!");
       return false;
     } else if (
