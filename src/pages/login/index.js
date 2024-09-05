@@ -11,7 +11,7 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: "", password: "" });
 
   const isValidEmail = (emailAddress) => {
-    return emailAddress.trim() !== "";
+    return emailAddress.includes("@") && emailAddress.includes("@");
   };
 
   const isValidPassword = (password) => {
