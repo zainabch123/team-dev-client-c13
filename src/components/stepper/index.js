@@ -39,8 +39,7 @@ const Stepper = ({ data, header, children, onComplete }) => {
 
             <div className="stepper-buttons">
                 <Button text="Back" classes="offwhite" onClick={onBackClick}/>
-                <Button text={currentStep === children.length - 1 ? 'Submit' : 'Next'} classes="blue"
-                        onClick={validateInput} />
+                <Button text={currentStep === children.length - 1 ? 'Submit' : 'Next'} classes="blue" onClick={validateInput} />
             </div>
         </Card>
     );
