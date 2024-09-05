@@ -9,12 +9,23 @@ const Register = () => {
   const { onRegister } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
+
   const specialChars = /^(?=.*[!@#$%^&*])/;
   const numbers = /^(?=.*[0-9])/;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   const onFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  function validateEmail() {
+    if (!emailPattern.test(formData.email)) {
+      setErrorMsg("Please enter a valid email address.");
+      return false;
+    }
+    return true;
+  }
 
   function validatePassword() {
     let enteredPass = formData.password;
@@ -42,7 +53,7 @@ const Register = () => {
   }
 
   function submitRegisterUser() {
-    if (validatePassword()) {
+    if (validateEmail() && validatePassword()) {
       onRegister(formData.email, formData.password);
     }
   }

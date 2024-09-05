@@ -11,15 +11,11 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: "", password: "" });
 
   const isValidEmail = (emailAddress) => {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailPattern.test(emailAddress);
+    return emailAddress.trim() !== "";
   };
 
   const isValidPassword = (password) => {
-    // Example validation: at least 8 characters, 1 uppercase, 1 number, 1 special character
-    const passwordPattern =
-      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordPattern.test(password);
+    return password.length >= 8;
   };
 
   const onChange = (e) => {
@@ -35,7 +31,7 @@ const Login = () => {
       : "Please enter a valid email address.";
     const passwordError = isValidPassword(formData.password)
       ? ""
-      : "Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.";
+      : "Password must be at least 8 characters long.";
 
     if (emailError || passwordError) {
       setErrors({ email: emailError, password: passwordError });
@@ -78,11 +74,6 @@ const Login = () => {
               classes="green width-full"
             />
           </form>
-          {/* <Button
-            text="Log in"
-            onClick={() => onLogin(formData.email, formData.password)}
-            classes="green width-full"
-          /> */}
         </div>
       </CredentialsCard>
     </div>
