@@ -9,15 +9,15 @@ const Register = () => {
   const { onRegister } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
-  const specialChars = /^(?=.*[!@#$%^&*])/;
-  const numbers = /^(?=.*[0-9])/;
-  const forbiddenChars = /^(?=.*[(){}[\]|`¬¦"'<>:;|~_\-+=,])/;
   const onFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   function validatePassword() {
+    const specialChars = /^(?=.*[!@#$%^&*])/;
+    const numbers = /^(?=.*[0-9])/;
+    const forbiddenChars = /^(?=.*[(){}[\]|`¬¦"'<>:;|~_\-+=,])/;
     let enteredPass = formData.password;
     setErrorMsg("");
     if (forbiddenChars.test(enteredPass)) {
