@@ -26,8 +26,6 @@ const AuthProvider = ({ children }) => {
   const handleLogin = async (email, password) => {
     const res = await login(email, password);
 
-    console.log("Login Res token", res);
-
     if (!res.data.token) {
       return navigate("/login");
     }
@@ -46,8 +44,6 @@ const AuthProvider = ({ children }) => {
   const handleRegister = async (email, password) => {
     const res = await register(email, password);
     setToken(res.data.token);
-
-    console.log("Res token", res.data.token);
 
     navigate("/verification");
   };
