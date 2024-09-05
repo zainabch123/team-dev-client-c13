@@ -3,20 +3,19 @@ import Form from "../../../components/form"
 import TextInput from "../../../components/form/textInput"
 import {useState} from "react";
 
-const StepOne = ({ data, setData }) => {
-    const [profilePicture, setProfilePicture] = useState("")
+const RegistrationStepOne = ({ data, setData }) => {
+    const [profilePictureBase64, setProfilePictureBase64] = useState("")
 
     const toBase64 = (event) => {
         const file = event.target.files[0]
-        let base64
 
         if (file) {
             const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = () => {
+                const base64 = reader.result.toString()
+                setProfilePictureBase64(base64)
                 // Restructuring reader output to mimic event
-                base64 = reader.result.toString()
-                setProfilePicture(base64)
                 setData(event = {
                     target: {
                         name: "profilePicture",
@@ -36,8 +35,8 @@ const StepOne = ({ data, setData }) => {
                 <div className="welcome-form-profileimg">
                     <p className="text-blue1">Photo</p>
                     <div className="welcome-form-profileimg-input">
-                        {profilePicture ? (
-                            <img src={profilePicture} alt="Avatar Preview" style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
+                        {profilePictureBase64 ? (
+                            <img src={profilePictureBase64} alt="Avatar Preview" style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
                         ) : (
                             <ProfileIcon colour="#28C846" background="#64DC78" />
                         )}
@@ -63,4 +62,4 @@ const StepOne = ({ data, setData }) => {
     )
 }
 
-export default StepOne
+export default RegistrationStepOne

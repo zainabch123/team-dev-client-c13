@@ -4,7 +4,8 @@ import Button from "../button";
 import "./style.css";
 import { useState } from "react";
 
-const Stepper = ({ data, header, children, onComplete }) => {
+const RegistrationStepper = ({ profileInputData, header, children, onComplete }) => {
+    const {firstName, lastName } = profileInputData
     const [currentStep, setCurrentStep] = useState(0)
 
     const onBackClick = () => {
@@ -23,7 +24,7 @@ const Stepper = ({ data, header, children, onComplete }) => {
     }
 
     const validateInput = () => {
-        if (data.firstName || data.lastName) {
+        if (firstName || lastName) {
             onNextClick()
         }
     }
@@ -45,4 +46,4 @@ const Stepper = ({ data, header, children, onComplete }) => {
     );
 };
 
-export default Stepper;
+export default RegistrationStepper;
