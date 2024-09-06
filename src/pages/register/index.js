@@ -3,67 +3,34 @@ import Button from "../../components/button";
 import TextInput from "../../components/form/textInput";
 import useAuth from "../../hooks/useAuth";
 import CredentialsCard from "../../components/credentials";
+import { validateEmail, validatePassword } from "../../utils/validations";
 import "./register.css";
 
 const Register = () => {
   const { onRegister } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errors, setErrors] = useState({ email: "", password: "" });
 
   const onFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  function validateEmail() {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    
-    if (!emailPattern.test(formData.email)) {
-      setErrorMsg("Please enter a valid email address.");
-      return false;
-    }
-    
-    return true;
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  function validatePassword() {
-    const specialChars = /^(?=.*[!@#$%^&*])/;
-    const numbers = /^(?=.*[0-9])/;
-    const forbiddenChars = /^(?=.*[(){}[\]|`¬¦"'<>:;|~_\-+=,])/;
-    
-    let enteredPass = formData.password;
-    setErrorMsg("");
-    
-    if (forbiddenChars.test(enteredPass)) {
-      setErrorMsg("Password contains invalid characters!");
-      return false;
-    } else if (enteredPass.length < 8) {
-      setErrorMsg("Password must be at least 8 characters long!");
-      return false;
-    } else if (
-      enteredPass.toLowerCase() === enteredPass ||
-      enteredPass.toUpperCase() === enteredPass
-    ) {
-      setErrorMsg(
-        "Password must contain at least 1 uppercase and 1 lowercase letter"
-      );
-      return false;
-    } else if (!numbers.test(enteredPass)) {
-      setErrorMsg("Password must contain at least 1 number");
-      return false;
-    } else if (!specialChars.test(enteredPass)) {
-      setErrorMsg("Password must contain at least 1 special character");
-      return false;
-    } else {
-      return true;
-    }
-  }
+    const emailError = validateEmail(formData.email);
+    const passwordError = validatePassword(formData.password);
 
-  function submitRegisterUser() {
-    if (validateEmail() && validatePassword()) {
-      onRegister(formData.email, formData.password);
+    if (emailError || passwordError) {
+      // If there are any validation errors, set them
+      setErrors({ email: emailError, password: passwordError });
+      return;
     }
-  }
+
+    // If both validations pass, proceed with registration
+    onRegister(formData.email, formData.password);
+  };
 
   return (
     <div className="bg-blue register credentialpage">
@@ -75,13 +42,14 @@ const Register = () => {
         altButtonText="Log in"
       >
         <div className="register-form">
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextInput
               value={formData.email}
               onChange={onFormChange}
               type="email"
               name="email"
               label={"Email *"}
+              error={errors.email}
             />
             <TextInput
               value={formData.password}
@@ -89,17 +57,14 @@ const Register = () => {
               name="password"
               label={"Password *"}
               type={"password"}
+              error={errors.password}
             />
-            <div>{errorMsg}</div>
-            <Button
-              type="submit"
-              text="Sign up"
-              onClick={(e) => {
-                e.preventDefault();
-                submitRegisterUser();
-              }}
-              classes="green width-full"
-            />
+            <div className="error-message">
+              {errors.email && <p>{errors.email}</p>} {/* Render email error */}
+              {errors.password && <p>{errors.password}</p>}{" "}
+              {/* Render password error */}
+            </div>
+            <Button type="submit" text="Sign up" classes="green width-full" />
           </form>
         </div>
       </CredentialsCard>
