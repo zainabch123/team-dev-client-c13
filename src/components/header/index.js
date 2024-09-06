@@ -9,8 +9,10 @@ import { NavLink } from "react-router-dom"
 import { useState } from "react"
 
 const Header = () => {
-    const { token, onLogout } = useAuth()
+    const { token, onLogout, user } = useAuth()
     const [isMenuVisible, setIsMenuVisible] = useState(false)
+
+    console.log("user from header", user)
 
     const onClickProfileIcon = () => {
         setIsMenuVisible(!isMenuVisible)
