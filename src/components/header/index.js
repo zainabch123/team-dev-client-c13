@@ -1,59 +1,79 @@
-import FullLogo from "../../assets/fullLogo"
-import useAuth from "../../hooks/useAuth"
-import './style.css'
-import Card from "../card"
-import ProfileIcon from "../../assets/icons/profileIcon"
-import CogIcon from "../../assets/icons/cogIcon"
-import LogoutIcon from "../../assets/icons/logoutIcon"
-import { NavLink } from "react-router-dom"
-import { useState } from "react"
+import FullLogo from "../../assets/fullLogo";
+import useAuth from "../../hooks/useAuth";
+import "./style.css";
+import Card from "../card";
+import ProfileIcon from "../../assets/icons/profileIcon";
+import CogIcon from "../../assets/icons/cogIcon";
+import LogoutIcon from "../../assets/icons/logoutIcon";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 
 const Header = () => {
-    const { token, onLogout, user } = useAuth()
-    const [isMenuVisible, setIsMenuVisible] = useState(false)
+  const { token, onLogout, user } = useAuth();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-    console.log("user from header", user)
+   const location = useLocation();
 
-    const onClickProfileIcon = () => {
-        setIsMenuVisible(!isMenuVisible)
-    }
+   console.log("user from profile", user);
+   console.log("header location", location);
 
-    if (!token) {
-        return null
-    }
+  const onClickProfileIcon = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
 
-    return (
-        <header>
-            <FullLogo textColour="white" />
+  if (!token) {
+    return null;
+  }
 
-            <div className="profile-icon" onClick={onClickProfileIcon}><p>AJ</p></div>
+  return (
+    <header>
+      <FullLogo textColour="white" />
 
-            {isMenuVisible &&
-                <div className="user-panel">
-                    <Card>
-                        <section className="post-details">
-                            <div className="profile-icon">
-                                <p>AJ</p>
-                            </div>
+      <div className="profile-icon" onClick={onClickProfileIcon}>
+        <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+      </div>
 
-                            <div className="post-user-name">
-                                <p>Alex Jameson</p>
-                                <small>Software Developer, Cohort 3</small>
-                            </div>
-                        </section>
+      {isMenuVisible && (
+        <div className="user-panel">
+          <Card>
+            <section className="post-details">
+              <div className="profile-icon">
+                <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+              </div>
 
-                        <section className="user-panel-options border-top">
-                            <ul>
-                                <li><NavLink to='/'><ProfileIcon /> <p>Profile</p></NavLink></li>
-                                <li><NavLink to='/'><CogIcon /> <p>Settings &amp; Privacy</p></NavLink></li>
-                                <li><NavLink to='#' onClick={onLogout}><LogoutIcon /> <p>Log out</p></NavLink></li>
-                            </ul>
-                        </section>
-                    </Card>
-                </div>
-            }
-        </header>
-    )
-}
+              <div className="post-user-name">
+                <p>
+                  {user.firstName} {user.lastName}
+                </p>
+                <small>Software Developer, Cohort {user.cohort_id}</small>
+              </div>
+            </section>
 
-export default Header
+            <section className="user-panel-options border-top">
+              <ul>
+                <li>
+                  <NavLink to={`/profile/${user.id}`} >
+                    <ProfileIcon /> <p>Profile</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/">
+                    <CogIcon /> <p>Settings &amp; Privacy</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="#" onClick={onLogout}>
+                    <LogoutIcon /> <p>Log out</p>
+                  </NavLink>
+                </li>
+              </ul>
+            </section>
+          </Card>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

@@ -11,7 +11,7 @@ import { ModalProvider } from "./context/modal";
 import Welcome from "./pages/welcome";
 
 const App = () => {
-	return (
+  return (
     <>
       <AuthProvider>
         <ModalProvider>
@@ -38,7 +38,7 @@ const App = () => {
               }
             />
             <Route
-              path="profile/:id"
+              path="/profile/:id"
               element={
                 <ProtectedRoute>
                   <Profile />

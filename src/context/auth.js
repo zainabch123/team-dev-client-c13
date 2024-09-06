@@ -19,12 +19,15 @@ const AuthProvider = ({ children }) => {
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    console.log("stored user", storedUser);
-
     if (storedToken && storedUser) {
       setToken(storedToken);
-      setUser(storedUser)
-      navigate(location.state?.from?.pathname || "/");
+      setUser(storedUser);
+      if (location.state?.from?.pathname) {
+        navigate(location.state.from.pathname || "/");
+      }
+
+      console.log("auth provider location", location.state);
+      // navigate(location.state?.from?.pathname || "/");
     }
   }, [location.state?.from?.pathname, navigate]);
 
