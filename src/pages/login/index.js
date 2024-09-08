@@ -3,17 +3,13 @@ import Button from "../../components/button";
 import TextInput from "../../components/form/textInput";
 import useAuth from "../../hooks/useAuth";
 import CredentialsCard from "../../components/credentials";
-import { validateEmail } from "../../utils/validations";
+import { validateEmail, validatePassword } from "../../utils/validations";
 import "./login.css";
 
 const Login = () => {
   const { onLogin } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
-
-  const isValidPassword = (password) => {
-    return password.length >= 8;
-  };
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     const emailError = validateEmail(formData.email);
-    const passwordError = isValidPassword(formData.password)
+    const passwordError = validatePassword(formData.password)
       ? ""
       : "Password must be at least 8 characters long.";
 
