@@ -25,6 +25,11 @@ async function getPosts() {
 
 async function getUser(userId) {
   const res = await get(`users/${userId}`);
+
+  console.log(res);
+  if (!res.ok) {
+    throw new Error(`Error fetching user: ${res.data.id}`);
+  }
   return res.data.user;
 }
 
