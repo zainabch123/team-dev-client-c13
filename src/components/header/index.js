@@ -8,7 +8,6 @@ import LogoutIcon from "../../assets/icons/logoutIcon";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-
 const Header = () => {
   const { token, onLogout, user } = useAuth();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -25,9 +24,11 @@ const Header = () => {
     <header>
       <FullLogo textColour="white" />
 
-      <div className="profile-icon" onClick={onClickProfileIcon}>
-        <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
-      </div>
+      {user && (
+        <div className="profile-icon" onClick={onClickProfileIcon}>
+          <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+        </div>
+      )}
 
       {isMenuVisible && (
         <div className="user-panel">
@@ -48,7 +49,7 @@ const Header = () => {
             <section className="user-panel-options border-top">
               <ul>
                 <li>
-                  <NavLink to={`/profile/${user.id}`} >
+                  <NavLink to={`/profile/${user.id}`}>
                     <ProfileIcon /> <p>Profile</p>
                   </NavLink>
                 </li>

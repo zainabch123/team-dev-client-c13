@@ -27,7 +27,7 @@ async function getUser(userId) {
   const res = await get(`users/${userId}`);
 
   console.log(res);
-  if (!res.ok) {
+  if (res.status==='fail') {
     throw new Error(`Error fetching user: ${res.data.id}`);
   }
   return res.data.user;

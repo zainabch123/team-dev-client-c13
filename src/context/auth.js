@@ -61,7 +61,17 @@ const AuthProvider = ({ children }) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
 
-    await createProfile(userId, firstName, lastName, githubUrl, bio);
+    const res = await createProfile(
+      userId,
+      firstName,
+      lastName,
+      githubUrl,
+      bio
+    );
+
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    setToken(res.data.token);
+    setUser(res.data.user);
 
     navigate("/");
   };
