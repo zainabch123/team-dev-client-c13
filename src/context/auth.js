@@ -25,8 +25,6 @@ const AuthProvider = ({ children }) => {
       if (location.state?.from?.pathname) {
         navigate(location.state.from.pathname || "/");
       }
-
-      console.log("auth provider location", location.state);
       // navigate(location.state?.from?.pathname || "/");
     }
   }, [location.state?.from?.pathname, navigate]);

@@ -7,16 +7,11 @@ import CogIcon from "../../assets/icons/cogIcon";
 import LogoutIcon from "../../assets/icons/logoutIcon";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+
 
 const Header = () => {
   const { token, onLogout, user } = useAuth();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-   const location = useLocation();
-
-   console.log("user from profile", user);
-   console.log("header location", location);
 
   const onClickProfileIcon = () => {
     setIsMenuVisible(!isMenuVisible);
