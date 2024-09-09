@@ -7,9 +7,11 @@ import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import "./style.css";
+import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
 	const [searchVal, setSearchVal] = useState('');
+	 const { user } = useAuth();
 
 	const onChange = (e) => {
 		setSearchVal(e.target.value);
@@ -28,38 +30,38 @@ const Dashboard = () => {
 	};
 
 	return (
-		<>
-			<main>
-				<Card>
-					<div className="create-post-input">
-						<div className="profile-icon">
-							<p>AJ</p>
-						</div>
-						<Button text="What's on your mind?" onClick={showModal} />
-					</div>
-				</Card>
+    <>
+      <main>
+        <Card>
+          <div className="create-post-input">
+            <div className="profile-icon">
+              <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+            </div>
+            <Button text="What's on your mind?" onClick={showModal} />
+          </div>
+        </Card>
 
-				<Posts />
-			</main>
+        <Posts />
+      </main>
 
-			<aside>
-				<Card>
-					<form onSubmit={(e) => e.preventDefault()}>
-						<TextInput
-							icon={<SearchIcon />}
-							value={searchVal}
-							name="Search"
-							onChange={onChange}
-						/>
-					</form>
-				</Card>
+      <aside>
+        <Card>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <TextInput
+              icon={<SearchIcon />}
+              value={searchVal}
+              name="Search"
+              onChange={onChange}
+            />
+          </form>
+        </Card>
 
-				<Card>
-					<h4>My Cohort</h4>
-				</Card>
-			</aside>
-		</>
-	);
+        <Card>
+          <h4>My Cohort</h4>
+        </Card>
+      </aside>
+    </>
+  );
 };
 
 export default Dashboard;
