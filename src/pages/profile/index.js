@@ -5,6 +5,9 @@ import { getUser } from "../../service/apiClient";
 import "./profile.css";
 import ProfileCircle from "../../components/profileCircle";
 import ProfileIcon from "../../assets/icons/profileIcon";
+import Form from "../../components/form";
+import TextInput from "../../components/form/textInput";
+import Button from "../../components/button";
 
 const Profile = () => {
   // const { user } = useAuth();
@@ -46,169 +49,158 @@ const Profile = () => {
       </div>
       <div className="profile-card">
         <div className="profile-card-header">
-          <ProfileCircle initials={userInitials} />
-          <h3>
-            {userProfile.firstName} {userProfile.lastName}
-          </h3>
-          <p>Software Developer</p>
+          <div className="profile profile-icon">
+            <p>{`${userProfile.firstName[0]}${userProfile.lastName[0]}`}</p>
+          </div>
+          <div className="profile-header-text">
+            <h3>
+              {userProfile.firstName} {userProfile.lastName}
+            </h3>
+            <p>Software Developer</p>
+          </div>
         </div>
-        <form className="profile-form">
+        <Form className="profile-form">
           <div className="basic-info">
             <h3>Basic info</h3>
-            <div className="welcome-form-profileimg">
-              <p className="text-blue1">Photo</p>
-              <div className="welcome-form-profileimg-input">
-                <ProfileIcon colour="#28C846" background="#64DC78" />
-                <p className="text-blue1">Add headshot</p>
+            <div className="basic profile-form-inputs">
+              <div className="profileimg-section">
+                <p className="profileimg-text">Photo</p>
+                <div className="profileimg profile-icon">
+                  <p>{`${userProfile.firstName[0]}${userProfile.lastName[0]}`}</p>
+                </div>
+                <div className="profileimg-input">
+                  <p className="profileimg-input-text">Add headshot</p>
+                </div>
               </div>
-              <p className="welcome-form-profileimg-error">
-                Please upload a valid image file
-              </p>
-            </div>
-            <label>
-              First Name*
-              <input
+              <TextInput
+                label="First Name*"
                 type="text"
-                id="firstName"
                 name="firstName"
                 value={userProfile.firstName}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Last Name*
-              <input
+              />
+
+              <TextInput
+                label="Last Name*"
                 type="text"
-                id="lastName"
                 name="lastName"
                 value={userProfile.lastName}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Username*
-              <input type="text" id="username" name="username" readOnly></input>
-            </label>
-            <label>
-              GitHub Username*
-              <input
+              />
+
+              <TextInput
+                label="Username*"
                 type="text"
-                id="github-url"
+                id="username"
+                name="username"
+                readOnly
+              />
+
+              <TextInput
+                label="GitHub Username*"
+                type="text"
                 name="github-url"
                 value={userProfile.githubUrl}
                 readOnly
-              ></input>
-            </label>
+              />
+            </div>
           </div>
           <div className="training-info">
             <h3>Training info</h3>
-            <label>
-              Role*
-              <input
+            <div className="training profile-form-inputs">
+              <TextInput
+                label="Role*"
                 type="text"
-                id="role"
                 name="role"
                 value={userProfile.role}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Specialism*
-              <input
+              />
+
+              <TextInput
+                label="Specialism*"
                 type="text"
-                id="specialism"
                 name="speacialism"
                 value={"Software Developer"}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Chort*
-              <input
+              />
+
+              <TextInput
+                label="Cohort*"
                 type="text"
-                id="cohort"
                 name="cohort"
                 value={"Cohort " + userProfile.cohort_id}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Start Date*
-              <input
+              />
+
+              <TextInput
+                label="Start Date*"
                 type="text"
-                id="start-date"
                 name="start-date"
                 value={"January 2023"}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              End Date*
-              <input
+              />
+
+              <TextInput
+                label="End Date*"
                 type="text"
-                id="end-date"
                 name="end-date"
                 value={"June 2023"}
                 readOnly
-              ></input>
-            </label>
+              />
+            </div>
           </div>
           <div className="contact-info">
             <h3>Contact info</h3>
-            <label>
-              Email*
-              <input
+            <div className="contact profile-form-inputs">
+              <TextInput
+                label="Email*"
                 type="email"
-                id="email"
                 name="email"
                 value={userProfile.email}
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Mobile*
-              <input
+              />
+
+              <TextInput
+                label="Mobile*"
                 type="tel"
-                id="mobile"
                 name="mobile"
                 value="079 111 111 111"
                 readOnly
-              ></input>
-            </label>
-            <label>
-              Password*
-              <input
-                type="text"
-                id="password"
+              />
+
+              <TextInput
+                label="Password*"
+                type="password"
                 name="password"
-                value={"Needs to be set"}
+                value="Needs to be set"
                 readOnly
-              ></input>
-            </label>
+              />
+            </div>
           </div>
           <div className="bio-info">
             <h3>Bio</h3>
-            <label>
-              Bio
-              <textarea
-                type="text"
-                id="bio"
-                name="bio"
-                value={userProfile.biography}
-                maxLength={"300"}
-                readOnly
-              />
-            </label>
+            <div className="bio profile-form-inputs">
+              <label>
+                Bio
+                <textarea
+                  label="Bio"
+                  name="bio"
+                  value={userProfile.biography}
+                  maxLength={"300"}
+                  readOnly
+                />
+              </label>
+            </div>
           </div>
-          <div className="profile-submit">
-            <button className="cancel-button" type="submit">
-              Cancel
-            </button>
-            <button className="submit-button" type="submit">
-              Save
-            </button>
+          <div className="profile-buttons">
+            <Button text="Cancel" type="button" className="cancel-button" />
+            <Button
+              text="Save"
+              type="submit"
+              id="save-button"
+            />
           </div>
-        </form>
+        </Form>
       </div>
     </main>
   );

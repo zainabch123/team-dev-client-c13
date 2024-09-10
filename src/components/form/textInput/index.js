@@ -20,7 +20,7 @@ const TextInput = ({ value, onChange, name, label, icon, type = "text" }) => {
           <input
             type="text"
             name={name}
-            value={input}
+            value={value}
             className="passwordreveal"
           />
         )}
