@@ -1,5 +1,4 @@
 import { useState } from "react";
-import LockIcon from "../../../assets/icons/lockIcon";
 
 const TextInput = ({
   value,
@@ -57,6 +56,7 @@ const TextInput = ({
           value={value}
           onChange={onChange}
           className={icon && "input-has-icon"}
+          disabled={disabled}
         />
         {icon && <span className="input-icon">{icon}</span>}
       </div>

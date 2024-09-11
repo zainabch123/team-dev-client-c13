@@ -25,7 +25,6 @@ const AuthProvider = ({ children }) => {
       if (location.state?.from?.pathname) {
         navigate(location.state.from.pathname || "/");
       }
-      // navigate(location.state?.from?.pathname || "/");
     }
   }, [location.state?.from?.pathname, navigate]);
 

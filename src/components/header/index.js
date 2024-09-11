@@ -5,6 +5,7 @@ import Card from "../card";
 import ProfileIcon from "../../assets/icons/profileIcon";
 import CogIcon from "../../assets/icons/cogIcon";
 import LogoutIcon from "../../assets/icons/logoutIcon";
+import { getInitials } from "../../service/getInitials";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
@@ -26,7 +27,7 @@ const Header = () => {
 
       {user && (
         <div className="profile-icon" onClick={onClickProfileIcon}>
-          <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+          <p>{getInitials(user.firstName, user.lastName)}</p>
         </div>
       )}
 
