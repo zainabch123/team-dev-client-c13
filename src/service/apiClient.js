@@ -9,13 +9,20 @@ async function register(email, password) {
   return await login(email, password);
 }
 
-async function createProfile(userId, firstName, lastName, githubUrl, bio, profilePicture) {
+async function createProfile(
+  userId,
+  firstName,
+  lastName,
+  githubUrl,
+  bio,
+  profilePicture
+) {
   return await patch(`users/${userId}`, {
     firstName,
     lastName,
     githubUrl,
     bio,
-    profilePicture
+    profilePicture,
   });
 }
 
@@ -27,7 +34,7 @@ async function getPosts() {
 async function getUser(userId) {
   const res = await get(`users/${userId}`);
 
-  if (res.status==='fail') {
+  if (res.status === "fail") {
     throw new Error(`Error fetching user: ${res.data.id}`);
   }
   return res.data.user;
