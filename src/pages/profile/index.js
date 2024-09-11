@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getUser } from "../../service/apiClient";
 import "./profile.css";
 import ProfileCircle from "../../components/profileCircle";
-import ProfileIcon from "../../assets/icons/profileIcon";
+import LockIcon from "../../assets/icons/lockIcon";
 import Form from "../../components/form";
 import TextInput from "../../components/form/textInput";
 import Button from "../../components/button";
@@ -93,6 +93,7 @@ const Profile = () => {
                 type="text"
                 id="username"
                 name="username"
+                value="insert username here"
                 readOnly
               />
 
@@ -114,6 +115,8 @@ const Profile = () => {
                 name="role"
                 value={userProfile.role}
                 readOnly
+                disabled={true}
+                icon={<LockIcon />}
               />
 
               <TextInput
@@ -122,6 +125,8 @@ const Profile = () => {
                 name="speacialism"
                 value={"Software Developer"}
                 readOnly
+                disabled
+                icon={<LockIcon />}
               />
 
               <TextInput
@@ -130,6 +135,8 @@ const Profile = () => {
                 name="cohort"
                 value={"Cohort " + userProfile.cohort_id}
                 readOnly
+                disabled
+                icon={<LockIcon />}
               />
 
               <TextInput
@@ -138,6 +145,8 @@ const Profile = () => {
                 name="start-date"
                 value={"January 2023"}
                 readOnly
+                disabled
+                icon={<LockIcon />}
               />
 
               <TextInput
@@ -146,6 +155,8 @@ const Profile = () => {
                 name="end-date"
                 value={"June 2023"}
                 readOnly
+                disabled
+                icon={<LockIcon />}
               />
             </div>
           </div>
@@ -193,12 +204,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="profile-buttons">
-            <Button text="Cancel" type="button" className="cancel-button" />
-            <Button
-              text="Save"
-              type="submit"
-              id="save-button"
-            />
+            <Button text="Edit" type="button" classes="edit-button" />
           </div>
         </Form>
       </div>
