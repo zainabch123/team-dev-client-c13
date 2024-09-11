@@ -7,9 +7,11 @@ import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import "./style.css";
+import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
 	const [searchVal, setSearchVal] = useState('');
+	 const { user } = useAuth();
 
 	const onChange = (e) => {
 		setSearchVal(e.target.value);
@@ -33,7 +35,7 @@ const Dashboard = () => {
 				<Card>
 					<div className="create-post-input">
 						<div className="profile-icon">
-							<p>AJ</p>
+							<p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
 						</div>
 						<Button text="What's on your mind?" onClick={showModal} />
 					</div>
