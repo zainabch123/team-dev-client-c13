@@ -32,7 +32,6 @@ const Profile = () => {
     fetchSelectedProfile();
   }, [id]);
 
-  console.log("selected User", selectedProfile);
 
   if (selectedProfile === null) {
      return <Dashboard />;
