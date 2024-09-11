@@ -15,14 +15,14 @@ async function createProfile(
   lastName,
   githubUrl,
   bio,
-  profilePicture
+  pictureProfile
 ) {
   return await patch(`users/${userId}`, {
     firstName,
     lastName,
     githubUrl,
     bio,
-    profilePicture,
+    pictureProfile,
   });
 }
 
