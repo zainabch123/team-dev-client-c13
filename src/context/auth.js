@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
     navigate("/verification");
   };
 
-  const handleCreateProfile = async (firstName, lastName, githubUrl, bio) => {
+  const handleCreateProfile = async (firstName, lastName, githubUrl, bio, profilePicture) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
 
@@ -65,7 +65,8 @@ const AuthProvider = ({ children }) => {
       firstName,
       lastName,
       githubUrl,
-      bio
+      bio,
+      profilePicture
     );
 
     localStorage.setItem("user", JSON.stringify(res.data.user));
