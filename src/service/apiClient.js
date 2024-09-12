@@ -13,6 +13,10 @@ async function createProfile(userId, firstName, lastName, githubUrl, bio, profil
     return await patch(`users/${userId}`, { firstName, lastName, githubUrl, bio, profilePicture })
 }
 
+async function createPost(content) {
+    return await post('posts', { content }, true)
+}
+
 async function getPosts() {
     const res = await get('posts')
     return res.data.posts
@@ -55,5 +59,6 @@ export {
     login,
     getPosts,
     register,
-    createProfile
+    createProfile,
+    createPost,
 }
