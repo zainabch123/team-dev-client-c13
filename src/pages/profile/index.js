@@ -1,4 +1,5 @@
 import useAuth from "../../hooks/useAuth";
+import useProfile from "../../hooks/useProfile";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../../service/apiClient";
@@ -15,26 +16,25 @@ import "./profile.css";
 const Profile = () => {
   const { user } = useAuth();
   const { id } = useParams();
-  const [selectedProfile, setSelectedProfile] = useState(null);
+  const { profile, setProfile } = useProfile();
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSelectedProfile = async () => {
       try {
         const profileData = await getUser(id);
-        setSelectedProfile(profileData);
+        setProfile(profileData);
       } catch (e) {
         setError(e.message || "Failed to load user profile");
-        setSelectedProfile(undefined);
+        setProfile(undefined);
       }
     };
 
     fetchSelectedProfile();
-  }, [id]);
+  }, [id, setProfile]);
 
-
-  if (selectedProfile === null) {
-     return <Dashboard />;
+  if (profile === null) {
+    return <Dashboard />;
   }
 
   if (error) {
@@ -48,15 +48,15 @@ const Profile = () => {
       </div>
       <div className="profile-card">
         <ProfileCardHeader
-          firstName={selectedProfile.firstName}
-          lastName={selectedProfile.lastName}
+          firstName={profile.firstName}
+          lastName={profile.lastName}
         />
         <Form className="profile-form">
-          <BasicInfoSection profile={selectedProfile} />
-          <TrainingInfoSection profile={selectedProfile} user={user} />
-          <ContactInfoSection profile={selectedProfile} />
-          <BioInfoSection profile={selectedProfile} />
-          <ProfileButtons profile={selectedProfile} user={user} />
+          <BasicInfoSection profile={profile} />
+          <TrainingInfoSection profile={profile} user={user} />
+          <ContactInfoSection profile={profile} />
+          <BioInfoSection profile={profile} />
+          <ProfileButtons profile={profile} user={user} />
         </Form>
       </div>
     </main>

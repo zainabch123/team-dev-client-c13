@@ -1,6 +1,9 @@
+import useProfile from "../../hooks/useProfile";
+
 const EditProfile = () => {
+    const {profile} = useProfile();
 return (
-    <h1>Test Header</h1>
+    <h1>Here is {profile.firstName}</h1>
 )
 }
 
