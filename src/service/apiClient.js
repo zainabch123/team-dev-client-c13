@@ -28,6 +28,7 @@ async function createProfile(
 
 async function getPosts() {
   const res = await get("posts");
+  console.log(res)
   return res.data.posts;
 }
 
