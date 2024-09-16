@@ -23,7 +23,7 @@ const TrainingInfoSection = ({ profile, user }) => {
               label="Specialism*"
               type="text"
               name="specialism"
-              value="Software Developer"
+              value={profile.specialism}
               disabled={true}
               icon={<LockIcon />}
             />
@@ -78,7 +78,7 @@ const TrainingInfoSection = ({ profile, user }) => {
               label="Specialism*"
               type="text"
               name="speacialism"
-              value={"Software Developer"}
+              value={profile.specialism}
               disabled={true}
               icon={<LockIcon />}
             />

@@ -16,7 +16,7 @@ const ContactInfoSection = ({ profile }) => {
             label="Mobile*"
             type="tel"
             name="mobile"
-            value="079 111 111 111"
+            value={profile.mobile}
             disabled={true}
           />
           <TextInput

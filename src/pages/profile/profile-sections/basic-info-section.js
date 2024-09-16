@@ -33,11 +33,11 @@ const BasicInfoSection = ({ profile }) => {
           label="Username*"
           type="text"
           name="username"
-          value="insert username here"
+          value={profile.username}
           disabled
         />
         <TextInput
-          label="GitHub Username*"
+          label="GitHub URL*"
           type="text"
           name="github-url"
           value={profile.githubUrl}
