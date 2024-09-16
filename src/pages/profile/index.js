@@ -56,7 +56,11 @@ const Profile = () => {
           <TrainingInfoSection profile={profile} user={user} editable={false} />
           <ContactInfoSection profile={profile} user={user} editable={false} />
           <BioInfoSection profile={profile} user={user} editable={false} />
-          <ProfileButtons profile={profile} user={user} />
+          <ProfileButtons
+            profile={profile}
+            user={user}
+            buttonToDisplay={"Edit"}
+          />
         </Form>
       </div>
     </main>

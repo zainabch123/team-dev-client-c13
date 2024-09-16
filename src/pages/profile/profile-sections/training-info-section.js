@@ -1,8 +1,8 @@
 import TextInput from "../../../components/form/textInput";
 import LockIcon from "../../../assets/icons/lockIcon";
 
-const TrainingInfoSection = ({ profile, user, editable }) => {
-  const isTeacher = user.role==="TEACHER";
+const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
+  const isTeacher = user.role === "TEACHER";
 
   return (
     <>
@@ -17,8 +17,9 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               value={`${profile.role[0].toUpperCase()}${profile.role
                 .slice(1)
                 .toLowerCase()}`}
-              disabled={!editable || !isTeacher}
+              readOnly={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
 
             <TextInput
@@ -28,6 +29,7 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               value={profile.specialism}
               disabled={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
 
             <TextInput
@@ -35,8 +37,9 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               type="text"
               name="cohort"
               value={`Cohort ${profile.cohort_id}`}
-              disabled={!editable || !isTeacher}
+              readOnly={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
 
             <TextInput
@@ -53,7 +56,7 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               type="text"
               name="end-date"
               value={profile.endDate}
-              disabled={true}
+              readOnly={true}
               icon={<LockIcon />}
             />
           </div>
@@ -72,8 +75,9 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
                 profile.role[0].toUpperCase() +
                 profile.role.slice(1).toLowerCase()
               }
-              disabled={!editable || !isTeacher}
+              readOnly={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
 
             <TextInput
@@ -81,8 +85,9 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               type="text"
               name="speacialism"
               value={profile.specialism}
-              disabled={!editable || !isTeacher}
+              readOnly={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
 
             <TextInput
@@ -90,8 +95,9 @@ const TrainingInfoSection = ({ profile, user, editable }) => {
               type="text"
               name="cohort"
               value="Software Development Instructor"
-              disabled={!editable || !isTeacher}
+              readOnly={!editable || !isTeacher}
               icon={<LockIcon />}
+              onChange={handleInput}
             />
           </div>
         </div>
