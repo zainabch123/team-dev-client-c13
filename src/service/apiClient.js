@@ -80,6 +80,7 @@ async function request(method, endpoint, data, auth = true) {
 export {
     login,
     getPosts,
+    getUser,
     register,
     createProfile,
     createPost,
