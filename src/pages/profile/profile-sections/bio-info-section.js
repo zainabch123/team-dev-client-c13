@@ -1,4 +1,4 @@
-const BioInfoSection = ({ profile }) => {
+const BioInfoSection = ({ profile, user, editable }) => {
     return (
       <div className="bio-info">
         <h3>Bio</h3>
@@ -10,7 +10,7 @@ const BioInfoSection = ({ profile }) => {
               name="bio"
               value={profile.biography}
               maxLength={"300"}
-              disabled={true}
+              disabled={!editable}
             />
             <div className="character-counter">
               {profile.biography.length}/300

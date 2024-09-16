@@ -1,6 +1,6 @@
 import TextInput from "../../../components/form/textInput";
 
-const ContactInfoSection = ({ profile }) => {
+const ContactInfoSection = ({ profile, user, editable }) => {
     return (
       <div className="contact-info">
         <h3>Contact Info</h3>
@@ -10,21 +10,21 @@ const ContactInfoSection = ({ profile }) => {
             type="email"
             name="email"
             value={profile.email}
-            disabled={true}
+            disabled={!editable}
           />
           <TextInput
             label="Mobile*"
             type="tel"
             name="mobile"
             value={profile.mobile}
-            disabled={true}
+            disabled={!editable}
           />
           <TextInput
             label="Password*"
             type="password"
             name="password"
             value="Needs to be set"
-            disabled={true}
+            disabled={!editable}
           />
         </div>
       </div>

@@ -52,10 +52,10 @@ const Profile = () => {
           lastName={profile.lastName}
         />
         <Form className="profile-form">
-          <BasicInfoSection profile={profile} />
-          <TrainingInfoSection profile={profile} user={user} />
-          <ContactInfoSection profile={profile} />
-          <BioInfoSection profile={profile} />
+          <BasicInfoSection profile={profile} user={user} editable={false} />
+          <TrainingInfoSection profile={profile} user={user} editable={false} />
+          <ContactInfoSection profile={profile} user={user} editable={false} />
+          <BioInfoSection profile={profile} user={user} editable={false} />
           <ProfileButtons profile={profile} user={user} />
         </Form>
       </div>
