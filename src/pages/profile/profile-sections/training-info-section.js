@@ -37,7 +37,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               type="text"
               name="cohort"
               value={`Cohort ${profile.cohort_id}`}
-              readOnly={ !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -46,7 +46,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               label="Start Date*"
               type="text"
               name="start-date"
-              value={profile.startDate}
+              value={new Date(profile.startDate).toLocaleDateString()}
               readOnly={true}
               icon={<LockIcon />}
             />
@@ -55,7 +55,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               label="End Date*"
               type="text"
               name="end-date"
-              value={profile.endDate}
+              value={new Date(profile.endDate).toLocaleDateString()}
               readOnly={true}
               icon={<LockIcon />}
             />
@@ -85,7 +85,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               type="text"
               name="speacialism"
               value={profile.specialism}
-              readOnly={ !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -95,7 +95,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               type="text"
               name="cohort"
               value="Software Development Instructor"
-              readOnly={ !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />

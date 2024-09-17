@@ -7,14 +7,14 @@ const BioInfoSection = ({ profile, user, editable, handleInput }) => {
           Bio
           <textarea
             label="Bio"
-            name="biography"
-            value={profile.biography}
+            name="bio"
+            value={profile.bio}
             maxLength={"300"}
             readOnly={!editable}
             onChange={handleInput}
           />
           <div className="character-counter">
-            {profile.biography.length}/300
+            {profile.bio.length}/300
           </div>
         </label>
       </div>
