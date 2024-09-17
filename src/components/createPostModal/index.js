@@ -3,6 +3,7 @@ import useModal from "../../hooks/useModal"
 import useAuth from "../../hooks/useAuth";
 import './style.css'
 import Button from '../button'
+import { createPost } from "../../service/apiClient"
 
 const CreatePostModal = () => {
     // Use the useModal hook to get the closeModal function so we can close the modal on user interaction
@@ -11,18 +12,24 @@ const CreatePostModal = () => {
 
     const [message, setMessage] = useState(null)
     const [text, setText] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const onChange = (e) => {
         setText(e.target.value)
     }
 
     const onSubmit = () => {
-        setMessage('Submit button was clicked! Closing modal in 2 seconds...')
-
-        setTimeout(() => {
-            setMessage(null)
-            closeModal()
-        }, 2000)
+        setIsLoading(true)
+        try {
+            createPost(text)
+                .then(() => {
+                    setIsLoading(false)
+                    closeModal()
+                })
+        } catch (e) {
+            setIsLoading(false)
+            setMessage(e.message)
+        }
     }
 
     return (
@@ -47,15 +54,16 @@ const CreatePostModal = () => {
         <section className="create-post-actions">
           <Button
             onClick={onSubmit}
-            text="Post"
-            classes={`${text.length ? "blue" : "offwhite"} width-full`}
-            disabled={!text.length}
+            text='Post'
+            classes={`${text.length ? 'blue' : 'offwhite' } width-full`}
+            disabled={!text.length || isLoading}
+            isLoading={isLoading}
           />
         </section>
 
         {message && <p>{message}</p>}
       </>
-    );
+    )
 }
 
 export default CreatePostModal

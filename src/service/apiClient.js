@@ -26,6 +26,10 @@ async function createProfile(
   });
 }
 
+async function createPost(content) {
+    return await post('posts', { content }, true)
+}
+
 async function getPosts() {
   const res = await get("posts");
   return res.data.posts;
@@ -73,4 +77,11 @@ async function request(method, endpoint, data, auth = true) {
   return response.json();
 }
 
-export { login, getPosts, getUser, register, createProfile };
+export {
+    login,
+    getPosts,
+    getUser,
+    register,
+    createProfile,
+    createPost,
+}

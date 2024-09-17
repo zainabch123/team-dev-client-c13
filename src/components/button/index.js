@@ -1,7 +1,7 @@
-const Button = ({ text, onClick, type = "button", classes, disabled = false }) => {
+const Button = ({ text, onClick, type = "button", classes, disabled = false, isLoading = false }) => {
 	return (
 		<button type={type} onClick={onClick} className={classes} disabled={disabled}>
-			{text}
+			{isLoading ? <p>Loading...</p> : text}
 		</button>
 	);
 };
