@@ -1,5 +1,7 @@
 import useProfile from "../../hooks/useProfile";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react"; 
+import { useNavigate } from "react-router-dom";
 import Form from "../../components/form";
 import ProfileCardHeader from "../profile/profile-sections/profile-card-header";
 import BasicInfoSection from "../profile/profile-sections/basic-info-section";
@@ -7,16 +9,18 @@ import TrainingInfoSection from "../profile/profile-sections/training-info-secti
 import ContactInfoSection from "../profile/profile-sections/contact-info-section";
 import BioInfoSection from "../profile/profile-sections/bio-info-section";
 import ProfileButtons from "../profile/profile-sections/profile-buttons";
+import { createProfile } from "../../service/apiClient";
 import "../profile/profile.css";
-import { useState } from "react";
 
 const EditProfile = () => {
   const { profile } = useProfile();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
-//   console.log("profile", profile);
+  // console.log("profile", profile);
 
   const [updatedProfile, setUpdatedProfile] = useState({
+    userId: profile.id,
     cohort_id: profile.cohort_id,
     role: profile.role,
     firstName: profile.firstName,
@@ -29,8 +33,34 @@ const EditProfile = () => {
     mobile: profile.mobile,
     specialism: profile.specialism,
     startDate: profile.startDate,
-    endDate: profile.endDate
+    endDate: profile.endDate,
   });
+
+  const handleSave = async () => {
+    console.log("profile saved");
+    try {
+      await createProfile(
+        updatedProfile.userId,
+        updatedProfile.cohort_id,
+        updatedProfile.role,
+        updatedProfile.firstName,
+        updatedProfile.lastName,
+        updatedProfile.username,
+        updatedProfile.biography,
+        updatedProfile.githubUrl,
+        updatedProfile.profilePicture,
+        updatedProfile.mobile,
+        updatedProfile.specialism
+      );
+      navigate(`/profile/${profile.id}`);
+       window.scrollTo({
+         top: 0,
+         behavior: "smooth",
+       });
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -41,7 +71,7 @@ const EditProfile = () => {
     });
   };
 
-  console.log("updated profile", updatedProfile)
+  console.log("updated profile", updatedProfile);
 
   return (
     <main className="profile">
@@ -63,7 +93,6 @@ const EditProfile = () => {
           <TrainingInfoSection
             profile={updatedProfile}
             user={user}
-            editable={true}
             handleInput={handleInput}
           />
           <ContactInfoSection
@@ -82,7 +111,7 @@ const EditProfile = () => {
             profile={profile}
             user={user}
             buttonToDisplay={"Save"}
-            handleInput={handleInput}
+            handleSave={handleSave}
           />
         </Form>
       </div>

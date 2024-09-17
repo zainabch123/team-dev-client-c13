@@ -11,19 +11,33 @@ async function register(email, password) {
 
 async function createProfile(
   userId,
+  cohort_id,
+  role,
   firstName,
   lastName,
+  email,
+  biography,
   githubUrl,
-  bio,
-  pictureProfile
+  profilePicture,
+  username,
+  mobile,
+  specialism,
 ) {
-  return await patch(`users/${userId}`, {
+  const res = await patch(`users/${userId}`, {
+    cohort_id,
+    role,
     firstName,
     lastName,
+    email,
+    biography,
     githubUrl,
-    bio,
-    pictureProfile,
+    profilePicture,
+    username,
+    mobile,
+    specialism,
   });
+
+  return res.data.user
 }
 
 async function getPosts() {

@@ -1,7 +1,7 @@
 import TextInput from "../../../components/form/textInput";
 import LockIcon from "../../../assets/icons/lockIcon";
 
-const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
+const TrainingInfoSection = ({ profile, user, handleInput }) => {
   const isTeacher = user.role === "TEACHER";
 
   return (
@@ -17,7 +17,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               value={`${profile.role[0].toUpperCase()}${profile.role
                 .slice(1)
                 .toLowerCase()}`}
-              readOnly={!editable || !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -27,7 +27,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               type="text"
               name="specialism"
               value={profile.specialism}
-              disabled={!editable || !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -37,7 +37,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               type="text"
               name="cohort"
               value={`Cohort ${profile.cohort_id}`}
-              readOnly={!editable || !isTeacher}
+              readOnly={ !isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -47,7 +47,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               type="text"
               name="start-date"
               value={profile.startDate}
-              disabled={true}
+              readOnly={true}
               icon={<LockIcon />}
             />
 
@@ -75,7 +75,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
                 profile.role[0].toUpperCase() +
                 profile.role.slice(1).toLowerCase()
               }
-              readOnly={!editable || !isTeacher}
+              readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -85,7 +85,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               type="text"
               name="speacialism"
               value={profile.specialism}
-              readOnly={!editable || !isTeacher}
+              readOnly={ !isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
@@ -95,7 +95,7 @@ const TrainingInfoSection = ({ profile, user, editable, handleInput }) => {
               type="text"
               name="cohort"
               value="Software Development Instructor"
-              readOnly={!editable || !isTeacher}
+              readOnly={ !isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
             />
