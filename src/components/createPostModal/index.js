@@ -18,10 +18,10 @@ const CreatePostModal = () => {
         setText(e.target.value)
     }
 
-    const onSubmit = async () => {
+    const onSubmit = () => {
         setIsLoading(true)
         try {
-            await createPost(text)
+            createPost(text)
                 .then(() => {
                     setIsLoading(false)
                     closeModal()
