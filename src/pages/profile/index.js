@@ -10,7 +10,6 @@ import TrainingInfoSection from "./profile-sections/training-info-section";
 import ContactInfoSection from "./profile-sections/contact-info-section";
 import BioInfoSection from "./profile-sections/bio-info-section";
 import ProfileButtons from "./profile-sections/profile-buttons";
-import Dashboard from "../loading";
 import "./profile.css";
 
 const Profile = () => {
@@ -34,7 +33,12 @@ const Profile = () => {
   }, [id, setProfile]);
 
   if (profile === null) {
-    return <Dashboard />;
+    return (
+      <div className="overlay">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading, please wait...</div>
+      </div>
+    );
   }
 
   if (error) {

@@ -17,11 +17,19 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    // const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedToken && storedUser) {
+    // const userToStore = {
+    //   id: user.id,
+    //   role: user.role,
+    //   firstName: user.firstName,
+    //   lastName: user.lastName,
+    // };
+
+    if (storedToken) {
       setToken(storedToken);
-      setUser(storedUser);
+      console.log("user", user)
+      // setUser(storedUser);
       if (location.state?.from?.pathname) {
         navigate(location.state.from.pathname || "/");
       }
@@ -35,10 +43,19 @@ const AuthProvider = ({ children }) => {
       return navigate("/login");
     }
 
+    console.log("res", res.data.user.role)
+
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify(res.data.user));
     setToken(res.data.token);
     setUser(res.data.user);
+    // console.log("user", user.role)
+    // const userToStore = {
+    //   role: res.data.user.role,
+    //   firstName: res.data.user.firstName,
+    //   lastName: res.data.user.lastName,
+    // };
+    // localStorage.setItem("user", JSON.stringify(userToStore));
     navigate(location.state?.from?.pathname || "/");
   };
 
@@ -69,7 +86,7 @@ const AuthProvider = ({ children }) => {
       profilePicture
     );
 
-    localStorage.setItem("user", JSON.stringify(res.data.user));
+    // localStorage.setItem("user", JSON.stringify(res.data.user));
     setToken(res.data.token);
     setUser(res.data.user);
 

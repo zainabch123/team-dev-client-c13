@@ -16,6 +16,7 @@ const EditProfile = () => {
   const { profile } = useProfile();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   // console.log("profile", profile);
 
@@ -37,7 +38,7 @@ const EditProfile = () => {
   });
 
   const handleSave = async () => {
-    console.log("profile saved");
+    setIsLoading(true)
     try {
       await createProfile(
         updatedProfile.userId,
@@ -52,6 +53,7 @@ const EditProfile = () => {
         updatedProfile.mobile,
         updatedProfile.specialism
       );
+      setIsLoading(false)
       navigate(`/profile/${profile.id}`);
        window.scrollTo({
          top: 0,
@@ -74,48 +76,56 @@ const EditProfile = () => {
   console.log("updated profile", updatedProfile);
 
   return (
-    <main className="profile">
-      <div className="profile-titleblock">
-        <h2 className="h2">Edit Profile</h2>
-      </div>
-      <div className="profile-card">
-        <ProfileCardHeader
-          firstName={profile.firstName}
-          lastName={profile.lastName}
-        />
-        <Form className="profile-form">
-          <BasicInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
+    <>
+      {isLoading && (
+        <div className="overlay">
+          <div className="spinner"></div>
+          <div className="loading-text">Loading, please wait...</div>
+        </div>
+      )}
+      <main className={`profile`}>
+        <div className="profile-titleblock">
+          <h2 className="h2">Edit Profile</h2>
+        </div>
+        <div className="profile-card">
+          <ProfileCardHeader
+            firstName={profile.firstName}
+            lastName={profile.lastName}
           />
-          <TrainingInfoSection
-            profile={updatedProfile}
-            user={user}
-            handleInput={handleInput}
-          />
-          <ContactInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
-          />
-          <BioInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
-          />
-          <ProfileButtons
-            profile={profile}
-            user={user}
-            buttonToDisplay={"Save"}
-            handleSave={handleSave}
-          />
-        </Form>
-      </div>
-    </main>
+          <Form className="profile-form">
+            <BasicInfoSection
+              profile={updatedProfile}
+              user={user}
+              editable={true}
+              handleInput={handleInput}
+            />
+            <TrainingInfoSection
+              profile={updatedProfile}
+              user={user}
+              handleInput={handleInput}
+            />
+            <ContactInfoSection
+              profile={updatedProfile}
+              user={user}
+              editable={true}
+              handleInput={handleInput}
+            />
+            <BioInfoSection
+              profile={updatedProfile}
+              user={user}
+              editable={true}
+              handleInput={handleInput}
+            />
+            <ProfileButtons
+              profile={profile}
+              user={user}
+              buttonToDisplay={"Save"}
+              handleSave={handleSave}
+            />
+          </Form>
+        </div>
+      </main>
+    </>
   );
 };
 
