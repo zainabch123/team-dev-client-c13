@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   const location = useLocation();
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-  const { profile, setProfile } = useProfile();
+  const { setProfile } = useProfile();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -104,6 +104,7 @@ const AuthProvider = ({ children }) => {
     onRegister: handleRegister,
     onCreateProfile: handleCreateProfile,
     user,
+    setUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -36,7 +36,7 @@ async function createProfile(
   });
 
   if (res.status === "fail") {
-    throw new Error(`Error updating user: ${res.data.id}`);
+    throw new Error(`Error updating user: ${res.data.error}`);
   }
 
   return res.data.user

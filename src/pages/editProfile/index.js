@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 import Form from "../../components/form";
 import ProfileCardHeader from "../profile/profile-sections/profile-card-header";
 import BasicInfoSection from "../profile/profile-sections/basic-info-section";
-import TrainingInfoSection from "../profile/profile-sections/training-info-section";
-import ContactInfoSection from "../profile/profile-sections/contact-info-section";
+import StudentTrainingInfo from "../profile/profile-sections/student-training-section";
+import TeacherTrainingInfo from "../profile/profile-sections/teacher-training-section";import ContactInfoSection from "../profile/profile-sections/contact-info-section";
 import BioInfoSection from "../profile/profile-sections/bio-info-section";
 import ProfileButtons from "../profile/profile-sections/profile-buttons";
 import { createProfile } from "../../service/apiClient";
 import "../profile/profile.css";
+
 
 const EditProfile = () => {
   const { profile } = useProfile();
@@ -48,7 +49,7 @@ const EditProfile = () => {
         updatedProfile.bio,
         updatedProfile.githubUrl,
         updatedProfile.profilePicture,
-        updatedProfile.role,
+        updatedProfile.role.toUpperCase(),
         updatedProfile.username,
         updatedProfile.mobile,
         updatedProfile.specialism
@@ -104,12 +105,25 @@ const EditProfile = () => {
             editable={true}
             handleInput={handleInput}
           />
-          <TrainingInfoSection
-            profile={updatedProfile}
-            user={user}
-            handleInput={handleInput}
-            editable={true}
-          />
+         
+          {profile.role === "STUDENT" && (
+            <StudentTrainingInfo
+              profile={updatedProfile}
+              user={user}
+              handleInput={handleInput}
+              editable={true}
+            />
+          )}
+
+          {profile.role === "TEACHER" && (
+            <TeacherTrainingInfo
+              profile={updatedProfile}
+              user={user}
+              handleInput={handleInput}
+              editable={true}
+            />
+          )}
+
           <ContactInfoSection
             profile={updatedProfile}
             user={user}
