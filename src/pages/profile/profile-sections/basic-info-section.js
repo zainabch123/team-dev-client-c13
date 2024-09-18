@@ -35,7 +35,7 @@ const BasicInfoSection = ({ profile, user, editable, handleInput }) => {
           label="Username*"
           type="text"
           name="username"
-          value={profile.username}
+          value={profile.username || ""}
           readOnly={!editable}
           onChange={handleInput}
         />
@@ -43,7 +43,7 @@ const BasicInfoSection = ({ profile, user, editable, handleInput }) => {
           label="GitHub URL*"
           type="text"
           name="githubUrl"
-          value={profile.githubUrl}
+          value={profile.githubUrl || ""}
           readOnly={!editable}
           onChange={handleInput}
         />

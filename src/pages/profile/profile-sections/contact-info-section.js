@@ -9,14 +9,14 @@ const ContactInfoSection = ({ profile, user, editable, handleInput }) => {
           label="Email*"
           type="email"
           name="email"
-          value={profile.email}
+          value={profile.email || ""}
           readOnly={true}
         />
         <TextInput
           label="Mobile*"
           type="text"
           name="mobile"
-          value={profile.mobile}
+          value={profile.mobile || ""}
           readOnly={!editable}
           onChange={handleInput}
         />

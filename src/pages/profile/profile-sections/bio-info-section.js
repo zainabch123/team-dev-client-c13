@@ -8,7 +8,7 @@ const BioInfoSection = ({ profile, user, editable, handleInput }) => {
           <textarea
             label="Bio"
             name="bio"
-            value={profile.bio}
+            value={profile.bio || ""}
             maxLength={"300"}
             readOnly={!editable}
             onChange={handleInput}
