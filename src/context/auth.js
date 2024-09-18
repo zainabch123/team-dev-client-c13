@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import useProfile from "../hooks/useProfile";
 import Header from "../components/header";
 import Modal from "../components/modal";
 import Navigation from "../components/navigation";
@@ -14,6 +15,7 @@ const AuthProvider = ({ children }) => {
   const location = useLocation();
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const { profile, setProfile } = useProfile();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -45,7 +47,7 @@ const AuthProvider = ({ children }) => {
     };
     setUser(userToStore);
     localStorage.setItem("user", JSON.stringify(userToStore));
-    navigate(location.state?.from?.pathname || "/");
+    navigate("/");
   };
 
   const handleLogout = () => {
@@ -53,6 +55,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setToken(null);
     setUser(null);
+    setProfile(null);
   };
 
   const handleRegister = async (email, password) => {
