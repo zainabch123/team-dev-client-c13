@@ -3,7 +3,6 @@ import LockIcon from "../../../assets/icons/lockIcon";
 
 const TrainingInfoSection = ({ profile, user, handleInput, editable }) => {
   const isTeacher = user.role === "TEACHER";
-  console.log("isTeacher", isTeacher);
 
   return (
     <>

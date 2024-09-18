@@ -16,6 +16,7 @@ const EditProfile = () => {
   const { profile } = useProfile();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [updatedProfile, setUpdatedProfile] = useState({
@@ -58,8 +59,9 @@ const EditProfile = () => {
         top: 0,
         behavior: "smooth",
       });
-    } catch (error) {
-      console.log("Error", error);
+    } catch (e) {
+      setError(e.message || "Failed to edit user profile");
+      setIsLoading(false);
     }
   };
 
@@ -72,58 +74,63 @@ const EditProfile = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="overlay">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading, please wait...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
-    <>
-      {isLoading && (
-        <div className="overlay">
-          <div className="spinner"></div>
-          <div className="loading-text">Loading, please wait...</div>
-        </div>
-      )}
-      <main className={`profile`}>
-        <div className="profile-titleblock">
-          <h2 className="h2">Edit Profile</h2>
-        </div>
-        <div className="profile-card">
-          <ProfileCardHeader
-            firstName={profile.firstName}
-            lastName={profile.lastName}
+    <main className={`profile`}>
+      <div className="profile-titleblock">
+        <h2 className="h2">Edit Profile</h2>
+      </div>
+      <div className="profile-card">
+        <ProfileCardHeader
+          firstName={profile.firstName}
+          lastName={profile.lastName}
+        />
+        <Form className="profile-form">
+          <BasicInfoSection
+            profile={updatedProfile}
+            user={user}
+            editable={true}
+            handleInput={handleInput}
           />
-          <Form className="profile-form">
-            <BasicInfoSection
-              profile={updatedProfile}
-              user={user}
-              editable={true}
-              handleInput={handleInput}
-            />
-            <TrainingInfoSection
-              profile={updatedProfile}
-              user={user}
-              handleInput={handleInput}
-              editable={true}
-            />
-            <ContactInfoSection
-              profile={updatedProfile}
-              user={user}
-              editable={true}
-              handleInput={handleInput}
-            />
-            <BioInfoSection
-              profile={updatedProfile}
-              user={user}
-              editable={true}
-              handleInput={handleInput}
-            />
-            <ProfileButtons
-              profile={profile}
-              user={user}
-              buttonToDisplay={"Save"}
-              handleSave={handleSave}
-            />
-          </Form>
-        </div>
-      </main>
-    </>
+          <TrainingInfoSection
+            profile={updatedProfile}
+            user={user}
+            handleInput={handleInput}
+            editable={true}
+          />
+          <ContactInfoSection
+            profile={updatedProfile}
+            user={user}
+            editable={true}
+            handleInput={handleInput}
+          />
+          <BioInfoSection
+            profile={updatedProfile}
+            user={user}
+            editable={true}
+            handleInput={handleInput}
+          />
+          <ProfileButtons
+            profile={profile}
+            user={user}
+            buttonToDisplay={"Save"}
+            handleSave={handleSave}
+          />
+        </Form>
+      </div>
+    </main>
   );
 };
 

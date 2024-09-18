@@ -35,7 +35,15 @@ async function createProfile(
     specialism,
   });
 
+  if (res.status === "fail") {
+    throw new Error(`Error updating user: ${res.data.id}`);
+  }
+
   return res.data.user
+}
+
+async function createPost(content) {
+    return await post('posts', { content }, true)
 }
 
 async function getPosts() {
@@ -86,4 +94,11 @@ async function request(method, endpoint, data, auth = true) {
   return response.json();
 }
 
-export { login, getPosts, getUser, register, createProfile };
+export {
+    login,
+    getPosts,
+    getUser,
+    register,
+    createProfile,
+    createPost,
+}

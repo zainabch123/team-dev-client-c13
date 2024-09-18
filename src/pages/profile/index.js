@@ -27,10 +27,10 @@ const Profile = () => {
           ...profile,
           ...profileData,
         });
-        // setIsLoading(false);
       } catch (e) {
         setError(e.message || "Failed to load user profile");
-      } finally { setIsLoading(false)
+      } finally {
+        setIsLoading(false);
       }
     };
 
