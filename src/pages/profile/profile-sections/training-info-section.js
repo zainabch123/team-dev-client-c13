@@ -1,12 +1,13 @@
 import TextInput from "../../../components/form/textInput";
 import LockIcon from "../../../assets/icons/lockIcon";
 
-const TrainingInfoSection = ({ profile, user, handleInput }) => {
+const TrainingInfoSection = ({ profile, user, handleInput, editable }) => {
   const isTeacher = user.role === "TEACHER";
+  console.log("isTeacher", isTeacher);
 
   return (
     <>
-      {profile.role === "STUDENT" && (
+      {user.role === "STUDENT" && (
         <div className="training-info">
           <h3>Professional info</h3>
           <div className="training profile-form-inputs">
@@ -63,7 +64,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
         </div>
       )}
 
-      {profile.role === "TEACHER" && (
+      {user.role === "TEACHER" && (
         <div className="training-info">
           <h3>Professional info</h3>
           <div className="training profile-form-inputs">
@@ -72,8 +73,10 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
               type="text"
               name="role"
               value={
-                profile.role[0].toUpperCase() +
-                profile.role.slice(1).toLowerCase()
+                profile && profile.role
+                  ? profile.role[0].toUpperCase() +
+                    profile.role.slice(1).toLowerCase()
+                  : ""
               }
               readOnly={!isTeacher}
               icon={<LockIcon />}
@@ -83,7 +86,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
             <TextInput
               label="Specialism*"
               type="text"
-              name="speacialism"
+              name="specialism"
               value={profile.specialism}
               readOnly={!isTeacher}
               icon={<LockIcon />}
@@ -93,7 +96,7 @@ const TrainingInfoSection = ({ profile, user, handleInput }) => {
             <TextInput
               label="Job Title*"
               type="text"
-              name="cohort"
+              name="job-title"
               value="Software Development Instructor"
               readOnly={!isTeacher}
               icon={<LockIcon />}

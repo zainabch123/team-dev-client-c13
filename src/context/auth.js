@@ -17,19 +17,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    // const userToStore = {
-    //   id: user.id,
-    //   role: user.role,
-    //   firstName: user.firstName,
-    //   lastName: user.lastName,
-    // };
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedToken) {
       setToken(storedToken);
-      console.log("user", user)
-      // setUser(storedUser);
+      setUser(storedUser);
       if (location.state?.from?.pathname) {
         navigate(location.state.from.pathname || "/");
       }
@@ -43,19 +35,16 @@ const AuthProvider = ({ children }) => {
       return navigate("/login");
     }
 
-    console.log("res", res.data.user.role)
-
     localStorage.setItem("token", res.data.token);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
     setToken(res.data.token);
-    setUser(res.data.user);
-    // console.log("user", user.role)
-    // const userToStore = {
-    //   role: res.data.user.role,
-    //   firstName: res.data.user.firstName,
-    //   lastName: res.data.user.lastName,
-    // };
-    // localStorage.setItem("user", JSON.stringify(userToStore));
+    const userToStore = {
+      id: res.data.user.id,
+      role: res.data.user.role,
+      firstName: res.data.user.firstName,
+      lastName: res.data.user.lastName,
+    };
+    setUser(userToStore);
+    localStorage.setItem("user", JSON.stringify(userToStore));
     navigate(location.state?.from?.pathname || "/");
   };
 
@@ -73,7 +62,13 @@ const AuthProvider = ({ children }) => {
     navigate("/verification");
   };
 
-  const handleCreateProfile = async (firstName, lastName, githubUrl, bio, profilePicture) => {
+  const handleCreateProfile = async (
+    firstName,
+    lastName,
+    githubUrl,
+    bio,
+    profilePicture
+  ) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
 
@@ -86,9 +81,15 @@ const AuthProvider = ({ children }) => {
       profilePicture
     );
 
-    // localStorage.setItem("user", JSON.stringify(res.data.user));
+    const userToStore = {
+      id: res.data.user.id,
+      role: res.data.user.role,
+      firstName: res.data.user.firstName,
+      lastName: res.data.user.lastName,
+    };
+    localStorage.setItem("user", JSON.stringify(userToStore));
     setToken(res.data.token);
-    setUser(res.data.user);
+    setUser(userToStore);
 
     navigate("/");
   };

@@ -103,6 +103,7 @@ const EditProfile = () => {
               profile={updatedProfile}
               user={user}
               handleInput={handleInput}
+              editable={true}
             />
             <ContactInfoSection
               profile={updatedProfile}
