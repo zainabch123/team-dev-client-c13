@@ -42,7 +42,7 @@ const BasicInfoSection = ({ profile, user, editable, handleInput }) => {
         <TextInput
           label="GitHub URL*"
           type="text"
-          name="github-url"
+          name="githubUrl"
           value={profile.githubUrl}
           readOnly={!editable}
           onChange={handleInput}

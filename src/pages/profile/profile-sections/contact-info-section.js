@@ -10,12 +10,11 @@ const ContactInfoSection = ({ profile, user, editable, handleInput }) => {
           type="email"
           name="email"
           value={profile.email}
-          readOnly={!editable}
-          onChange={handleInput}
+          readOnly={true}
         />
         <TextInput
           label="Mobile*"
-          type="tel"
+          type="text"
           name="mobile"
           value={profile.mobile}
           readOnly={!editable}
@@ -26,7 +25,7 @@ const ContactInfoSection = ({ profile, user, editable, handleInput }) => {
           type="password"
           name="password"
           value="Needs to be set"
-          readOnly={!editable}
+          readOnly={true}
         />
       </div>
     </div>

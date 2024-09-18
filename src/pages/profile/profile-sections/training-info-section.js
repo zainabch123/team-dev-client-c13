@@ -15,9 +15,12 @@ const TrainingInfoSection = ({ profile, user, handleInput, editable }) => {
               label="Role*"
               type="text"
               name="role"
-              value={`${profile.role[0].toUpperCase()}${profile.role
-                .slice(1)
-                .toLowerCase()}`}
+              value={
+                profile.role
+                  ? profile.role[0].toUpperCase() +
+                    profile.role.slice(1).toLowerCase()
+                  : ""
+              }
               readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}
@@ -37,7 +40,7 @@ const TrainingInfoSection = ({ profile, user, handleInput, editable }) => {
               label="Cohort*"
               type="text"
               name="cohort"
-              value={`Cohort ${profile.cohort_id}`}
+              value={`Cohort ${profile.cohortId}`}
               readOnly={!isTeacher}
               icon={<LockIcon />}
               onChange={handleInput}

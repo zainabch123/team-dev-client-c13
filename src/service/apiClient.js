@@ -11,27 +11,25 @@ async function register(email, password) {
 
 async function createProfile(
   userId,
-  cohort_id,
-  role,
+  cohortId,
   firstName,
   lastName,
-  email,
   bio,
   githubUrl,
   profilePicture,
+  role,
   username,
   mobile,
-  specialism,
+  specialism
 ) {
   const res = await patch(`users/${userId}`, {
-    cohort_id,
-    role,
+    cohortId,
     firstName,
     lastName,
-    email,
     bio,
     githubUrl,
     profilePicture,
+    role,
     username,
     mobile,
     specialism,
@@ -42,7 +40,7 @@ async function createProfile(
 
 async function getPosts() {
   const res = await get("posts");
-  console.log(res)
+  console.log(res);
   return res.data.posts;
 }
 

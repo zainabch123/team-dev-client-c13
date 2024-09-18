@@ -3,7 +3,22 @@ import { createContext, useState } from "react";
 const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({
+    id: "",
+    cohortId: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    bio: "",
+    githubUrl: "",
+    profilePicture: "",
+    role: "",
+    username: "",
+    mobile: "",
+    specialism: "",
+    startDate: "",
+    endDate: "",
+  });
 
    const value = {
      profile,

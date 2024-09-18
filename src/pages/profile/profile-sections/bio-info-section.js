@@ -14,7 +14,7 @@ const BioInfoSection = ({ profile, user, editable, handleInput }) => {
             onChange={handleInput}
           />
           <div className="character-counter">
-            {profile.bio.length}/300
+            {profile.bio ? `${profile.bio.length}/300` : "0/300"}
           </div>
         </label>
       </div>

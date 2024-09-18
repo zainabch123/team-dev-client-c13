@@ -17,22 +17,27 @@ const Profile = () => {
   const { id } = useParams();
   const { profile, setProfile } = useProfile();
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSelectedProfile = async () => {
       try {
         const profileData = await getUser(id);
-        setProfile(profileData);
+        setProfile({
+          ...profile,
+          ...profileData,
+        });
+        // setIsLoading(false);
       } catch (e) {
         setError(e.message || "Failed to load user profile");
-        setProfile(undefined);
+      } finally { setIsLoading(false)
       }
     };
 
     fetchSelectedProfile();
-  }, [id, setProfile]);
+  }, [id]);
 
-  if (profile === null) {
+  if (isLoading) {
     return (
       <div className="overlay">
         <div className="spinner"></div>

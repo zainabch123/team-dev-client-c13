@@ -1,6 +1,6 @@
 import useProfile from "../../hooks/useProfile";
 import useAuth from "../../hooks/useAuth";
-import { useState } from "react"; 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/form";
 import ProfileCardHeader from "../profile/profile-sections/profile-card-header";
@@ -18,18 +18,16 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  // console.log("profile", profile);
-
   const [updatedProfile, setUpdatedProfile] = useState({
     userId: profile.id,
-    cohort_id: profile.cohort_id,
-    role: profile.role,
+    cohortId: profile.cohortId,
     firstName: profile.firstName,
     lastName: profile.lastName,
     email: profile.email,
     bio: profile.bio,
     githubUrl: profile.githubUrl,
     profilePicture: profile.profilePicture,
+    role: profile.role,
     username: profile.username,
     mobile: profile.mobile,
     specialism: profile.specialism,
@@ -38,27 +36,28 @@ const EditProfile = () => {
   });
 
   const handleSave = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
+    console.log("updated profile", updatedProfile);
     try {
       await createProfile(
         updatedProfile.userId,
-        updatedProfile.cohort_id,
-        updatedProfile.role,
+        updatedProfile.cohortId,
         updatedProfile.firstName,
         updatedProfile.lastName,
-        updatedProfile.username,
         updatedProfile.bio,
         updatedProfile.githubUrl,
         updatedProfile.profilePicture,
+        updatedProfile.role,
+        updatedProfile.username,
         updatedProfile.mobile,
         updatedProfile.specialism
       );
-      setIsLoading(false)
+      setIsLoading(false);
       navigate(`/profile/${profile.id}`);
-       window.scrollTo({
-         top: 0,
-         behavior: "smooth",
-       });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     } catch (error) {
       console.log("Error", error);
     }
@@ -72,8 +71,6 @@ const EditProfile = () => {
       [name]: value,
     });
   };
-
-  console.log("updated profile", updatedProfile);
 
   return (
     <>
