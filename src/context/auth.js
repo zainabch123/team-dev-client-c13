@@ -81,6 +81,7 @@ const AuthProvider = ({ children }) => {
       firstName,
       lastName,
       bio,
+      githubUrl,
       profilePicture
     );
 
