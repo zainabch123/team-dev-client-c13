@@ -7,61 +7,112 @@ import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import "./style.css";
-import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
-	const [searchVal, setSearchVal] = useState('');
-	 const { user } = useAuth();
+  const [searchVal, setSearchVal] = useState(""); // Search input state
+  const [searchResults, setSearchResults] = useState([]); // State for search results
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [errorMessage, setErrorMessage] = useState(""); // Error message state
 
-	const onChange = (e) => {
-		setSearchVal(e.target.value);
-	};
+  // Use the useModal hook to get the openModal and setModal functions
+  const { openModal, setModal } = useModal();
 
-	// Use the useModal hook to get the openModal and setModal functions
-	const { openModal, setModal } = useModal();
+  const onChangeSearchTerm = (e) => {
+    setSearchVal(e.target.value);
+  };
 
-	// Create a function to run on user interaction
-	const showModal = () => {
-		// Use setModal to set the header of the modal and the component the modal should render
-		setModal("Create a post", <CreatePostModal />); // CreatePostModal is just a standard React component, nothing special
+  // Show modal when the button is clicked
+  const showCreatePostModal = () => {
+    setModal("Create a post", <CreatePostModal />);
+    openModal();
+  };
 
-		// Open the modal!
-		openModal();
-	};
+  // Search handler for fetching user data
+  const handleSearch = async () => {
+    if (searchVal.trim().length === 0) return; // Return if search input is empty
 
-	return (
-		<>
-			<main>
-				<Card>
-					<div className="create-post-input">
-						<div className="profile-icon">
-							<p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
-						</div>
-						<Button text="What's on your mind?" onClick={showModal} />
-					</div>
-				</Card>
+    try {
+      // Split searchVal into firstName and lastName (assuming space separates them)
+      const [firstName, lastName] = searchVal.trim().split(" ");
 
-				<Posts />
-			</main>
+      // Create the appropriate query string for the API call
+      const query = new URLSearchParams({
+        first_name: firstName || "",
+        last_name: lastName || "",
+      }).toString();
 
-			<aside>
-				<Card>
-					<form onSubmit={(e) => e.preventDefault()}>
-						<TextInput
-							icon={<SearchIcon />}
-							value={searchVal}
-							name="Search"
-							onChange={onChange}
-						/>
-					</form>
-				</Card>
+      // Fetch users from the updated route with query parameters
+      const response = await fetch(`/api/users?${query}`);
+      const result = await response.json();
 
-				<Card>
-					<h4>My Cohort</h4>
-				</Card>
-			</aside>
-		</>
-	);
+      // Handle the search results
+      setSearchResults(result.users); // Store the fetched users
+    } catch (error) {
+      setErrorMessage("Failed to fetch search results."); // Set error message
+    } finally {
+      setIsLoading(false); // Reset loading state
+    }
+  };
+
+  // Handle "Enter" key press to trigger search
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && searchVal.trim()) {
+      event.preventDefault();
+      handleSearch();
+    }
+  };
+
+  return (
+    <>
+      <main>
+        <Card>
+          <div className="create-post-input">
+            <div className="profile-icon">
+              <p>AJ</p>
+            </div>
+            <Button text="What's on your mind?" onClick={showCreatePostModal} />
+          </div>
+        </Card>
+
+        <Posts />
+      </main>
+
+      <aside>
+        <Card>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <TextInput
+              icon={<SearchIcon />}
+              value={searchVal}
+              name="Search"
+              onChange={onChangeSearchTerm}
+              onKeyPress={handleKeyPress} // Added key press handler for Enter key
+            />
+            <Button
+              onClick={handleSearch}
+              disabled={!searchVal.trim() || isLoading} // Disable button when no input or loading
+              text={isLoading ? "Searching..." : "Search"} // Show loading text when searching
+            />
+          </form>
+        </Card>
+
+        <Card>
+          <h4>My Cohort</h4>
+          {/* Render error message */}
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          {/* Render search results */}
+          {searchResults.length > 0 ? (
+            <ul>
+              {searchResults.map((user) => (
+                <li key={user.id}>{user.name}</li>
+              ))}
+            </ul>
+          ) : (
+            !isLoading && searchVal && <p>No users found.</p> // Show message if no users found
+          )}
+        </Card>
+      </aside>
+    </>
+  );
 };
 
 export default Dashboard;
