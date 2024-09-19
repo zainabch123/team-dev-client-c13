@@ -39,7 +39,6 @@ const EditProfile = () => {
 
   const handleSave = async () => {
     setIsLoading(true);
-    console.log("updated profile", updatedProfile);
     try {
       await createProfile(
         updatedProfile.userId,
