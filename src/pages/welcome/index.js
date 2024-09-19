@@ -11,7 +11,7 @@ const Welcome = () => {
 	const [profile, setProfile] = useState({
 		firstName: "",
 		lastName: "",
-		githubUsername: "",
+		githubUrl: "",
 		bio: "",
 		profilePicture: "",
 	});
