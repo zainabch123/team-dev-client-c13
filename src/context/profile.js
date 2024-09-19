@@ -20,15 +20,12 @@ const ProfileProvider = ({ children }) => {
     endDate: "",
   });
 
-   const value = {
-     profile,
-     setProfile
-   };
-
+  const value = {
+    profile,
+    setProfile,
+  };
   return (
-    <ProfileContext.Provider value={ value}>
-      {children}
-    </ProfileContext.Provider>
+    <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
   );
 };
 

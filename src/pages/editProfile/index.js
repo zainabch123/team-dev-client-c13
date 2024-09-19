@@ -6,12 +6,12 @@ import Form from "../../components/form";
 import ProfileCardHeader from "../profile/profile-sections/profile-card-header";
 import BasicInfoSection from "../profile/profile-sections/basic-info-section";
 import StudentTrainingInfo from "../profile/profile-sections/student-training-section";
-import TeacherTrainingInfo from "../profile/profile-sections/teacher-training-section";import ContactInfoSection from "../profile/profile-sections/contact-info-section";
+import TeacherTrainingInfo from "../profile/profile-sections/teacher-training-section";
+import ContactInfoSection from "../profile/profile-sections/contact-info-section";
 import BioInfoSection from "../profile/profile-sections/bio-info-section";
 import ProfileButtons from "../profile/profile-sections/profile-buttons";
 import { createProfile } from "../../service/apiClient";
 import "../profile/profile.css";
-
 
 const EditProfile = () => {
   const { profile } = useProfile();
@@ -75,76 +75,75 @@ const EditProfile = () => {
     });
   };
 
-  if (isLoading) {
-    return (
-      <div className="overlay">
-        <div className="spinner"></div>
-        <div className="loading-text">Loading, please wait...</div>
-      </div>
-    );
-  }
-
   if (error) {
     return <div>{error}</div>;
   }
 
   return (
-    <main className={`profile`}>
-      <div className="profile-titleblock">
-        <h2 className="h2">Edit Profile</h2>
-      </div>
-      <div className="profile-card">
-        <ProfileCardHeader
-          firstName={profile.firstName}
-          lastName={profile.lastName}
-        />
-        <Form className="profile-form">
-          <BasicInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
+    <>
+      {isLoading && (
+        <div className="overlay">
+          <div className="spinner"></div>
+          <div className="loading-text">Loading, please wait...</div>
+        </div>
+      )}
+      <main className={`profile`}>
+        <div className="profile-titleblock">
+          <h2 className="h2">Edit Profile</h2>
+        </div>
+        <div className="profile-card">
+          <ProfileCardHeader
+            firstName={profile.firstName}
+            lastName={profile.lastName}
           />
-         
-          {profile.role === "STUDENT" && (
-            <StudentTrainingInfo
+          <Form className="profile-form">
+            <BasicInfoSection
               profile={updatedProfile}
               user={user}
-              handleInput={handleInput}
               editable={true}
+              handleInput={handleInput}
             />
-          )}
 
-          {profile.role === "TEACHER" && (
-            <TeacherTrainingInfo
+            {profile.role === "STUDENT" && (
+              <StudentTrainingInfo
+                profile={updatedProfile}
+                user={user}
+                handleInput={handleInput}
+                editable={true}
+              />
+            )}
+
+            {profile.role === "TEACHER" && (
+              <TeacherTrainingInfo
+                profile={updatedProfile}
+                user={user}
+                handleInput={handleInput}
+                editable={true}
+              />
+            )}
+
+            <ContactInfoSection
               profile={updatedProfile}
               user={user}
-              handleInput={handleInput}
               editable={true}
+              handleInput={handleInput}
             />
-          )}
-
-          <ContactInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
-          />
-          <BioInfoSection
-            profile={updatedProfile}
-            user={user}
-            editable={true}
-            handleInput={handleInput}
-          />
-          <ProfileButtons
-            profile={profile}
-            user={user}
-            buttonToDisplay={"Save"}
-            handleSave={handleSave}
-          />
-        </Form>
-      </div>
-    </main>
+            <BioInfoSection
+              profile={updatedProfile}
+              user={user}
+              editable={true}
+              handleInput={handleInput}
+            />
+            <ProfileButtons
+              profile={profile}
+              user={user}
+              buttonToDisplay={"Save"}
+              handleSave={handleSave}
+            />
+          </Form>
+        </div>
+      </main>
+    </>
   );
 };
 

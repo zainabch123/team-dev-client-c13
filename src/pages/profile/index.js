@@ -63,7 +63,7 @@ const Profile = () => {
         />
         <Form className="profile-form">
           <BasicInfoSection profile={profile} user={user} editable={false} />
-        
+
           {profile.role === "STUDENT" && (
             <StudentTrainingInfo
               profile={profile}
