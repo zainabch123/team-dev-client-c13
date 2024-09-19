@@ -68,8 +68,8 @@ const AuthProvider = ({ children }) => {
   const handleCreateProfile = async (
     firstName,
     lastName,
-    githubUrl,
     bio,
+    githubUrl,
     profilePicture
   ) => {
     const { userId } = jwt_decode(token);
@@ -80,8 +80,8 @@ const AuthProvider = ({ children }) => {
       userId,
       firstName,
       lastName,
-      githubUrl,
       bio,
+      githubUrl,
       profilePicture
     );
 
