@@ -5,7 +5,7 @@ const StudentTrainingInfo = ({ profile, handleInput, editable, user }) => {
     const isTeacher = user.role === "TEACHER";
     return (
       <div className="training-info">
-        <h3>Professional info</h3>
+        <h3>Training info</h3>
         <div className="training profile-form-inputs">
           <TextInput
             label="Role*"
