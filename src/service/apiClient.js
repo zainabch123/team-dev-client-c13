@@ -9,7 +9,20 @@ async function register(email, password) {
   return await login(email, password);
 }
 
-async function createProfile(
+async function createProfile(userId, firstName, lastName, bio, profilePicture) {
+  const res = await patch(`users/${userId}`, {
+    userId,
+    firstName,
+    lastName,
+    bio,
+    profilePicture,
+  });
+
+  return res.data.user;
+}
+
+
+async function updateProfile(
   userId,
   cohortId,
   firstName,
@@ -99,5 +112,6 @@ export {
     getUser,
     register,
     createProfile,
+    updateProfile,
     createPost,
 }
