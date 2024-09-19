@@ -8,6 +8,7 @@ const TextInput = ({
   icon,
   type = "text",
   disabled,
+  readOnly,
 }) => {
   const [input, setInput] = useState("");
   const [showpassword, setShowpassword] = useState(false);
@@ -57,6 +58,7 @@ const TextInput = ({
           onChange={onChange}
           className={icon && "input-has-icon"}
           disabled={disabled}
+          readOnly={readOnly}
         />
         {icon && <span className="input-icon">{icon}</span>}
       </div>

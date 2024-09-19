@@ -11,19 +11,35 @@ async function register(email, password) {
 
 async function createProfile(
   userId,
+  cohortId,
   firstName,
   lastName,
-  githubUrl,
   bio,
-  pictureProfile
+  githubUrl,
+  profilePicture,
+  role,
+  username,
+  mobile,
+  specialism
 ) {
-  return await patch(`users/${userId}`, {
+  const res = await patch(`users/${userId}`, {
+    cohortId,
     firstName,
     lastName,
-    githubUrl,
     bio,
-    pictureProfile,
+    githubUrl,
+    profilePicture,
+    role,
+    username,
+    mobile,
+    specialism,
   });
+
+  if (res.status === "fail") {
+    throw new Error(`Error updating user: ${res.data.error}`);
+  }
+
+  return res.data.user
 }
 
 async function createPost(content) {

@@ -1,40 +1,50 @@
 import useAuth from "../../hooks/useAuth";
+import useProfile from "../../hooks/useProfile";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../../service/apiClient";
 import Form from "../../components/form";
 import ProfileCardHeader from "./profile-sections/profile-card-header";
 import BasicInfoSection from "./profile-sections/basic-info-section";
-import TrainingInfoSection from "./profile-sections/training-info-section";
+import StudentTrainingInfo from "./profile-sections/student-training-section";
+import TeacherTrainingInfo from "./profile-sections/teacher-training-section";
 import ContactInfoSection from "./profile-sections/contact-info-section";
 import BioInfoSection from "./profile-sections/bio-info-section";
 import ProfileButtons from "./profile-sections/profile-buttons";
-import Dashboard from "../loading";
 import "./profile.css";
 
 const Profile = () => {
   const { user } = useAuth();
   const { id } = useParams();
-  const [selectedProfile, setSelectedProfile] = useState(null);
+  const { profile, setProfile } = useProfile();
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSelectedProfile = async () => {
       try {
         const profileData = await getUser(id);
-        setSelectedProfile(profileData);
+        setProfile({
+          ...profile,
+          ...profileData,
+        });
       } catch (e) {
         setError(e.message || "Failed to load user profile");
-        setSelectedProfile(undefined);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchSelectedProfile();
   }, [id]);
 
-
-  if (selectedProfile === null) {
-     return <Dashboard />;
+  if (isLoading) {
+    return (
+      <div className="overlay">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading, please wait...</div>
+      </div>
+    );
   }
 
   if (error) {
@@ -48,15 +58,34 @@ const Profile = () => {
       </div>
       <div className="profile-card">
         <ProfileCardHeader
-          firstName={selectedProfile.firstName}
-          lastName={selectedProfile.lastName}
+          firstName={profile.firstName}
+          lastName={profile.lastName}
         />
         <Form className="profile-form">
-          <BasicInfoSection profile={selectedProfile} />
-          <TrainingInfoSection profile={selectedProfile} user={user} />
-          <ContactInfoSection profile={selectedProfile} />
-          <BioInfoSection profile={selectedProfile} />
-          <ProfileButtons profile={selectedProfile} user={user} />
+          <BasicInfoSection profile={profile} user={user} editable={false} />
+
+          {profile.role === "STUDENT" && (
+            <StudentTrainingInfo
+              profile={profile}
+              user={user}
+              editable={false}
+            />
+          )}
+
+          {profile.role === "TEACHER" && (
+            <TeacherTrainingInfo
+              profile={profile}
+              user={user}
+              editable={false}
+            />
+          )}
+          <ContactInfoSection profile={profile} user={user} editable={false} />
+          <BioInfoSection profile={profile} user={user} editable={false} />
+          <ProfileButtons
+            profile={profile}
+            user={user}
+            buttonToDisplay={"Edit"}
+          />
         </Form>
       </div>
     </main>

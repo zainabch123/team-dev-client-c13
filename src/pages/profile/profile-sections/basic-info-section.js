@@ -1,7 +1,7 @@
 import TextInput from "../../../components/form/textInput";
 import { getInitials } from "../../../service/getInitials";
 
-const BasicInfoSection = ({ profile }) => {
+const BasicInfoSection = ({ profile, user, editable, handleInput }) => {
   return (
     <div className="basic-info">
       <h3>Basic Info</h3>
@@ -20,28 +20,32 @@ const BasicInfoSection = ({ profile }) => {
           type="text"
           name="firstName"
           value={profile.firstName}
-          disabled
+          readOnly={!editable}
+          onChange={handleInput}
         />
         <TextInput
           label="Last Name*"
           type="text"
           name="lastName"
           value={profile.lastName}
-          disabled
+          readOnly={!editable}
+          onChange={handleInput}
         />
         <TextInput
           label="Username*"
           type="text"
           name="username"
-          value="insert username here"
-          disabled
+          value={profile.username || ""}
+          readOnly={!editable}
+          onChange={handleInput}
         />
         <TextInput
-          label="GitHub Username*"
+          label="GitHub URL*"
           type="text"
-          name="github-url"
-          value={profile.githubUrl}
-          disabled
+          name="githubUrl"
+          value={profile.githubUrl || ""}
+          readOnly={!editable}
+          onChange={handleInput}
         />
       </div>
     </div>
