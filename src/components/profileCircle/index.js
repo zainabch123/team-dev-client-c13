@@ -10,12 +10,12 @@ import Menu from "../menu"
 import MenuItem from "../menu/menuItem"
 import './style.css'
 
-const ProfileCircle = ({ initials }) => {
+const ProfileCircle = ({ initials, userId }) => {
     const [isMenuVisible, setIsMenuVisible] = useState(false)
 
     return (
         <div className="profile-circle" onClick={() => setIsMenuVisible(!isMenuVisible)}>
-            {isMenuVisible && <CascadingMenu />}
+            {isMenuVisible && <CascadingMenu userId={userId}/> }
             
             <div className="profile-icon">
                 <p>{initials}</p>
@@ -25,30 +25,33 @@ const ProfileCircle = ({ initials }) => {
     )
 }
 
-const CascadingMenu = () => {
+const CascadingMenu = ({userId}) => {
     return (
-        <Menu className="profile-circle-menu">
-            <MenuItem icon={<ProfileIcon />} text='Profile' />
-            <MenuItem icon={<AddIcon />} text='Add note' />
+      <Menu className="profile-circle-menu">
+        <MenuItem
+          icon={<ProfileIcon />}
+          text="Profile"
+          linkTo={`/profile/${userId}`}
+        />
+        <MenuItem icon={<AddIcon />} text="Add note" />
 
-            <MenuItem icon={<CohortIcon />} text='Move to cohort'>
-                <MenuItem icon={<SquareBracketsIcon />} text='Software Development'>
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 1' />
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 2' />
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 3' />
-                </MenuItem>
+        <MenuItem icon={<CohortIcon />} text="Move to cohort">
+          <MenuItem icon={<SquareBracketsIcon />} text="Software Development">
+            <MenuItem icon={<CohortIconFill />} text="Cohort 1" />
+            <MenuItem icon={<CohortIconFill />} text="Cohort 2" />
+            <MenuItem icon={<CohortIconFill />} text="Cohort 3" />
+          </MenuItem>
 
-                <MenuItem icon={<MonitorIcon />} text='Frontend Development'>
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 1' />
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 2' />
-                    <MenuItem icon={<CohortIconFill />} text='Cohort 3' />
-                </MenuItem>
-            
-            </MenuItem>
+          <MenuItem icon={<MonitorIcon />} text="Frontend Development">
+            <MenuItem icon={<CohortIconFill />} text="Cohort 1" />
+            <MenuItem icon={<CohortIconFill />} text="Cohort 2" />
+            <MenuItem icon={<CohortIconFill />} text="Cohort 3" />
+          </MenuItem>
+        </MenuItem>
 
-            <MenuItem icon={<DeleteIcon />} text='Delete student' />
-        </Menu>
-    )
+        <MenuItem icon={<DeleteIcon />} text="Delete student" />
+      </Menu>
+    );
 }
 
 export default ProfileCircle

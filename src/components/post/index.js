@@ -5,7 +5,7 @@ import EditPostModal from "../editPostModal"
 import ProfileCircle from "../profileCircle"
 import "./style.css"
 
-const Post = ({ name, date, content, comments = [], likes = 0 }) => {
+const Post = ({ name, date, content, comments = [], likes = 0, userId }) => {
     const { openModal, setModal } = useModal()
 
     const userInitials = name.match(/\b(\w)/g)
@@ -19,7 +19,7 @@ const Post = ({ name, date, content, comments = [], likes = 0 }) => {
         <Card>
             <article className="post">
                 <section className="post-details">
-                    <ProfileCircle initials={userInitials} />
+                    <ProfileCircle initials={userInitials} userId={userId}/>
 
                     <div className="post-user-name">
                         <p>{name}</p>
