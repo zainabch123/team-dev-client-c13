@@ -13,7 +13,7 @@ const Button = ({
       className={`${classes} ${disabled ? "button-disabled" : ""}`}
       disabled={disabled}
     >
-      {isLoading ? <p>Loading...</p> : text}
+      {isLoading ? <span className="spinner"></span> : text}
     </button>
   );
 };
