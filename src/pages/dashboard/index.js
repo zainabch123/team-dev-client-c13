@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   // Show modal when the button is clicked
   const showCreatePostModal = () => {
-    setModal("Create a post", <CreatePostModal setPostCreated={setPostCreated} />);
+    setModal("Create a post", <CreatePostModal postCreated={postCreated} setPostCreated={setPostCreated} />);
     openModal();
   };
 

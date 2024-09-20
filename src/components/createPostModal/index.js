@@ -5,7 +5,7 @@ import './style.css'
 import Button from '../button'
 import { createPost } from "../../service/apiClient"
 
-const CreatePostModal = ({ setPostCreated }) => {
+const CreatePostModal = ({ postCreated, setPostCreated }) => {
     // Use the useModal hook to get the closeModal function so we can close the modal on user interaction
     const { closeModal } = useModal()
     const { user } = useAuth();
@@ -24,7 +24,7 @@ const CreatePostModal = ({ setPostCreated }) => {
             createPost(text)
                 .then(() => {
                     setIsLoading(false)
-                    setPostCreated(true)
+                    setPostCreated(!postCreated)
                     closeModal()
                 })
         } catch (e) {
