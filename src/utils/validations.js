@@ -53,7 +53,6 @@ export const validatePassword = (password) => {
     );
   }
   if (passwordErrors[0]) {
-    console.log(passwordErrors);
     return passwordErrors;
   } else {
     return "";
