@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
+  const [postCreated, setPostCreated] = useState(false);
   const { user } = useAuth();
 
   // Use the useModal hook to get the openModal and setModal functions
@@ -26,7 +27,7 @@ const Dashboard = () => {
 
   // Show modal when the button is clicked
   const showCreatePostModal = () => {
-    setModal("Create a post", <CreatePostModal />);
+    setModal("Create a post", <CreatePostModal postCreated={postCreated} setPostCreated={setPostCreated} />);
     openModal();
   };
 
@@ -77,7 +78,7 @@ const Dashboard = () => {
           </div>
         </Card>
 
-        <Posts />
+        <Posts postCreated={postCreated} />
       </main>
 
       <aside>
