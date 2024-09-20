@@ -34,8 +34,8 @@ const StudentTrainingInfo = ({ profile, handleInput, editable, user }) => {
         <TextInput
           label="Cohort*"
           type="text"
-          name="cohort"
-          value={profile.cohortId ? `Cohort ${profile.cohortId}` : ""}
+          name="cohortId"
+          value={profile.cohortId || ""}
           readOnly={!isTeacher}
           icon={<LockIcon />}
           onChange={handleInput}
