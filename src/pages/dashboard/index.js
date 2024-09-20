@@ -7,7 +7,7 @@ import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import useAuth from "../../hooks/useAuth";
-import { getInitials } from "../../service/getInitials"
+import { getInitials } from "../../service/getInitials";
 import "./style.css";
 
 const Dashboard = () => {
