@@ -6,6 +6,8 @@ import CreatePostModal from "../../components/createPostModal";
 import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
+import useAuth from "../../hooks/useAuth";
+import { getInitials } from "../../service/getInitials";
 import "./style.css";
 
 const Dashboard = () => {
@@ -13,6 +15,7 @@ const Dashboard = () => {
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
+  const { user } = useAuth();
 
   // Use the useModal hook to get the openModal and setModal functions
   const { openModal, setModal } = useModal();
@@ -68,7 +71,7 @@ const Dashboard = () => {
         <Card>
           <div className="create-post-input">
             <div className="profile-icon">
-              <p>AJ</p>
+              <p>{getInitials(user.firstName, user.lastName)}</p>
             </div>
             <Button text="What's on your mind?" onClick={showCreatePostModal} />
           </div>

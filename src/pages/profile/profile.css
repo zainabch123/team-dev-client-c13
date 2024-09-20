@@ -1,4 +1,4 @@
-.contianer {
+.container {
   position: relative;
 }
 main {
@@ -12,12 +12,14 @@ main {
 
 .profile-card {
   background-color: #ffffff;
-  width: 1201px;
-  height: 1577px;
+  width: 1fr;
+  height: 1fr;
   border-radius: 8px 0px 0px 0px;
   border: 1px 0px 0px 0px;
   margin-top: 24px;
-  padding: 24px;
+  padding: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .profile-card-header {
@@ -27,6 +29,7 @@ main {
   grid-template-columns: 80px 189px;
   gap: 16px;
   margin-bottom: 24px;
+  margin-top: 14px;
 }
 
 .profile.profile-icon {
@@ -55,7 +58,8 @@ main {
   display: grid;
   grid-template-columns: 565px 565px;
   margin-top: 20px;
-  gap: 24px;
+  margin-bottom: 20px;
+  gap: 30px;
 }
 
 .basic-info,
@@ -124,10 +128,12 @@ main {
 }
 
 .profile-buttons {
-  display: grid;
-  justify-items: flex-end;
   margin-top: 32px;
   margin-right: 20px;
+  position: absolute;
+  z-index: 1;
+  right: 11px;
+  top: 24px;
 }
 
 .profile-buttons button {
