@@ -1,5 +1,4 @@
-### Team Dev - Client
-
+# Team Dev - Client
 For frontend repo see [Team Dev - Server](https://github.com/zainabch123/team-dev-server-c13).
 
 Developed as part of a team simulation, this social-media-style app enables users to interact with teachers and students within their cohort. Key areas I contributed to include:
