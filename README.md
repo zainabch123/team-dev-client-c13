@@ -1,18 +1,11 @@
 ### Team Dev Client
 
-Client repository for team dev project.
+Developed as part of a team simulation, this social-media-style app enables users to interact with teachers and students within their cohort. Key areas I contributed to include:
 
-### Set up
+1. Updated the app's context to ensure essential user data is accessible throughout the UI, even after page refreshes.
+2. Implemented user registration, allowing new users to register and create their initial profiles.
+3. Developed functionality for users to view their own profiles and the profiles of others.
+4. Enabled students to edit their profiles, while teachers can edit any profile and manage user permissions using role-based access control.
+5. Updated the API using .yaml whenver changes were made.
 
-1. Copy the `.env.example` file to a new file named `.env` (NOTE: Make sure to copy the file, don't remove the original .env.example)
-2. Make sure the `REACT_APP_API_URL` environment variable in the `.env` file contains the URL of the server app on your machine
-3. `npm ci` to install dependencies
-4. `npm start` to run the app. The server must also be running on your machine
-
-### Project Management
-
-https://github.com/orgs/boolean-uk/projects/10/views/1
-
-### Contributing
-
-- Pull requests should be made from branches following the naming convention: `<username>-<issue_number>-<feature>`, e.g. `vherus-#1-user_registration`
+An integral aspect of this team development simulation was the use of Agile methodologies. This included regular stand-ups, retrospectives, and reporting to a Scrum Master. The process involved breaking down client specifications from Figma into actionable tasks, which were organized into tickets for the team to prioritize and plan effectively. It was a highly valuable experience in collaboration and real-world coding practices.
